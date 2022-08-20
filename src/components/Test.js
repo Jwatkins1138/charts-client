@@ -1,4 +1,4 @@
-
+import Header from './Header'
 
 const Test = () => {
 
@@ -22,7 +22,12 @@ const Test = () => {
   }
 
   return (
-    <button onClick={signUp}>sign up</button>
+    <div className='container'>
+      <Header />
+      <main className='test-main'>
+        <button onClick={signUp}>sign up</button>
+      </main>
+    </div>
   )
 
 }

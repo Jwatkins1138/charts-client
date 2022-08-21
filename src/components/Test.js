@@ -3,14 +3,10 @@ import Header from './Header'
 const Test = () => {
 
   const signUp = () => {
-    const url = ' https://fierce-beyond-99980.herokuapp.com/api/users';
+    const url = 'https://ancient-plateau-95772.herokuapp.com/signup';
     const user = {
       email: 'goushoryuken@gmail.com',
-      username: 'sirlordjason',
       password: 'password',
-      password_confirmation: 'password',
-      bio: 'hi',
-      image: 'hey'
     };
     fetch(url, {
       method: 'post',
@@ -19,6 +15,17 @@ const Test = () => {
       },
       body: JSON.stringify(user),
     })
+      .then((res) => {
+        if(res.ok) {
+          console.log(res.headers.get("Authorization"));
+          localStorage.setItem("token", res.headers.get("Authorization"));
+          return res.json();
+        } else {
+          throw new Error(res);
+        }
+      })
+      .then((json) => console.dir(json))
+      .catch((err) => console.error(err));
   }
 
   return (

@@ -121,7 +121,7 @@ main {
   z-index: -1;
 }
 
-.loading-text {
+#loading-text {
   z-index: -2;
   color: orange;
 }

@@ -10,10 +10,10 @@ const Loading = () => {
           <div className='home-bar'></div>
           <div className='home-bar'></div>
           <div className='home-bar'></div>
+          <div className='home-bar'></div>
+          <div className='home-bar'></div>
+          <div className='home-bar'></div>
           <h1 id='loading-text'>loading...</h1>
-          <div className='home-bar'></div>
-          <div className='home-bar'></div>
-          <div className='home-bar'></div>
         </main>
         <aside></aside>
       </div>

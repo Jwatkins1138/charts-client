@@ -1,6 +1,6 @@
 import Header from './Header'
 
-const Home = () => {
+const Loading = () => {
   return (
     <div className='container'>
       <Header />
@@ -10,6 +10,7 @@ const Home = () => {
           <div className='home-bar'></div>
           <div className='home-bar'></div>
           <div className='home-bar'></div>
+          <h1 id='loading-text'>loading...</h1>
           <div className='home-bar'></div>
           <div className='home-bar'></div>
           <div className='home-bar'></div>
@@ -19,4 +20,4 @@ const Home = () => {
     </div>
   )
 }
-export default Home;
+export default Loading;

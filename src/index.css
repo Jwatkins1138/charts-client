@@ -68,6 +68,34 @@ button:hover {
   background-color: black;
 }
 
+@keyframes stripes {
+  from { transform: translateY(-50%); }
+  to { transform: translateY(50%); }
+}
+
 main {
   display: flex;
+}
+
+.home-main {
+  height: 90vh;
+  background: url('./assets/arrow.svg');
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-bar {
+  height: 100%;
+  border-bottom: 1px solid orange;
+  animation-name: stripes;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-delay: none;
+  animation-timing-function: linear;
+}
+
+.loading-text {
+  z-index: -1;
+  color: orange;
 }

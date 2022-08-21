@@ -13,6 +13,7 @@ const Home = () => {
           <div className='home-bar'></div>
           <div className='home-bar'></div>
           <div className='home-bar'></div>
+          <div className='fill-bar'></div>
         </main>
         <aside></aside>
       </div>

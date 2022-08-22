@@ -75,11 +75,15 @@ aside {
 }
 
 button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: .5em;
   color: orange;
   background: none;
   border: 1px solid gold;
   max-width: 5em;
+  max-height: 2.5em;
 }
 
 button:hover {

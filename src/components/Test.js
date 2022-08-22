@@ -3,13 +3,15 @@ import Header from './Header'
 const Test = () => {
 
   const signUp = () => {
-    const url = 'https://ancient-plateau-95772.herokuapp.com/signup';
+    // const url = 'https://ancient-plateau-95772.herokuapp.com/signup';
+    const url = 'http://localhost:3001/signup'
     const user = {
       email: 'goushoryuken@gmail.com',
       password: 'password',
     };
     fetch(url, {
       method: 'post',
+      credentials: 'omit',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -31,8 +33,12 @@ const Test = () => {
   return (
     <div className='container'>
       <Header />
-      <main className='test-main'>
-        <button onClick={signUp}>sign up</button>
+      <main className='test'>
+        <aside></aside>
+        <div className='test-main'>
+          <button onClick={signUp}>sign up</button>
+        </div>
+        <aside></aside>
       </main>
     </div>
   )

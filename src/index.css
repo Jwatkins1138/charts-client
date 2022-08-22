@@ -138,10 +138,6 @@ main {
 .test-main {
   height: 100%;
   width: 100%;
-  background: url('./assets/arrow.svg');
-  background-position: center;
-  background-repeat: no-repeat;
   display: flex;
-  flex-direction: column;
-  z-index: -2;
+  padding: 1em;
 }

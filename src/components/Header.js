@@ -4,14 +4,14 @@ const Header = () => {
   return (
     <header>
       <div className='head-title'>
-        <Link to='/'><h1>allcharts.site</h1></Link>
+        <Link to='/'><h2>allcharts.site</h2></Link>
       </div>
-      <nav className='head-nav'>
-        <Link to='/'><div className='nav-item'>login</div></Link>
-        <Link to='/'><div className='nav-item'>charts</div></Link>
-        <Link to='/loading'><div className='nav-item'>loading</div></Link>
-        <Link to='/test'><div className='nav-item'>test</div></Link>
-      </nav>
+      <input
+        type='text'
+        id='search'
+        placeholder='search'
+      />
+      <h2>x</h2>
     </header>
   )
 }

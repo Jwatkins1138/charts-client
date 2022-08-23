@@ -1,23 +1,29 @@
 import Header from './Header'
+import SubHeader from './SubHeader'
 
 const Test = () => {
 
   const signUp = () => {
     // const url = 'https://ancient-plateau-95772.herokuapp.com/signup';
     // const url = 'https://fierce-beyond-99980.herokuapp.com/api/users'
-    const url = 'http://localhost:3001/api/users'
+    // const url = 'https://shrouded-sierra-98549.herokuapp.com/users'
+    const url = 'http://localhost:3001/users'
     const user = {
       user: {
-        username: '2jason',
-        email: '2goushoryuken@gmail.com',
-        password: 'password',
+        // username: '4jason',
+        // email: '4goushoryuken@gmail.com',
+        // password: 'password',
+        // username: 'test',
+        email: 'test@test.com',
+        password: 'testpass',
       }
     };
     fetch(url, {
       method: 'post',
-      credentials: 'include',
+      // credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
       },
       body: JSON.stringify(user),
     })
@@ -67,10 +73,10 @@ const Test = () => {
   }
 
   const currentUser = () => {
-    const url = `http://localhost:3001/api/user`;
+    const url = `http://localhost:3001/member/data`;
     fetch(url, {
       method: 'get',
-      credentials: 'include',
+      // credentials: 'include',
       headers: {
         'Authorization': localStorage.token,
         'Content-Type': 'application/json',
@@ -86,6 +92,7 @@ const Test = () => {
   return (
     <div className='container'>
       <Header />
+      <SubHeader />
       <main className='test'>
         <aside></aside>
         <div className='test-main'>

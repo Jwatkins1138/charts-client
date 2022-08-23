@@ -38,7 +38,9 @@ header {
   background-color: rgb(0, 0, 0, .5);
   color: lime;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: .5em;
 }
 
 aside {
@@ -51,7 +53,14 @@ aside {
   align-items: center;
 }
 
+input[type=text] {
+  padding: .5em;
+  background: rgb(255, 255, 255, .5);
+  border-radius: 10%;
+}
+
 .head-nav {
+  background: rgb(0, 0, 0, .5);
   display: flex;
   justify-content: space-evenly;
   align-items: center;

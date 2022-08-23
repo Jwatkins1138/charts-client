@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 const Header = () => {
   return (
@@ -11,7 +13,12 @@ const Header = () => {
         id='search'
         placeholder='search'
       />
-      <h2>x x x x</h2>
+      <nav className='header-side'>
+        <FontAwesomeIcon icon={faCoffee} />
+        <FontAwesomeIcon icon={faCoffee} />
+        <FontAwesomeIcon icon={faCoffee} />
+        <FontAwesomeIcon icon={faCoffee} />
+      </nav>
     </header>
   )
 }

@@ -41,6 +41,7 @@ header {
   justify-content: space-evenly;
   align-items: center;
   padding: .5em;
+  
 }
 
 aside {
@@ -56,7 +57,8 @@ aside {
 input[type=text] {
   padding: .5em;
   background: rgb(255, 255, 255, .5);
-  border-radius: 10%;
+  border-radius: 5%;
+  cursor: default;
 }
 
 .head-nav {
@@ -70,6 +72,10 @@ input[type=text] {
   border-left: .5px solid orangered;
   border-right: .5px solid orangered;
   padding: .5em;
+}
+
+.nav-icon {
+  margin: .25em;
 }
 
 .nav-item:hover {
@@ -93,10 +99,11 @@ button {
   border: 1px solid gold;
   max-width: 5em;
   max-height: 2.5em;
+  margin: .5em;
 }
 
 button:hover {
-  background-color: black;
+  background-color: blue;
 }
 
 @keyframes stripes {
@@ -153,4 +160,21 @@ main {
   width: 100%;
   display: flex;
   padding: 1em;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-card {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: black;
+  border: 1px solid rgb(255, 69, 0, .5);
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid rgb(255, 69, 0, .5);
 }

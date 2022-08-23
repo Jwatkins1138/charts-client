@@ -96,10 +96,14 @@ const Test = () => {
       <main className='test'>
         <aside></aside>
         <div className='test-main'>
-          <button onClick={signUp}>sign up</button>
-          <button onClick={logIn}>log in</button>
-          <button onClick={currentUser}>user?</button>
-          <button onClick={token}>token</button>
+          <div className='form-card'>
+            <div className='card-footer'>
+              <button onClick={signUp}>sign up</button>
+              <button onClick={logIn}>log in</button>
+              <button onClick={currentUser}>user?</button>
+              <button onClick={token}>token</button>
+            </div>
+          </div>
         </div>
         <aside></aside>
       </main>

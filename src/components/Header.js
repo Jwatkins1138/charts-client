@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { faChartBar } from '@fortawesome/free-regular-svg-icons'
 
 const Header = () => {
   return (
@@ -14,10 +14,10 @@ const Header = () => {
         placeholder='search'
       />
       <nav className='header-side'>
-        <FontAwesomeIcon icon={faCoffee} />
-        <FontAwesomeIcon icon={faCoffee} />
-        <FontAwesomeIcon icon={faCoffee} />
-        <FontAwesomeIcon icon={faCoffee} />
+        <FontAwesomeIcon className="nav-icon" icon={faChartBar} />
+        <FontAwesomeIcon className="nav-icon" icon={faChartBar} />
+        <FontAwesomeIcon className="nav-icon" icon={faChartBar} />
+        <FontAwesomeIcon className="nav-icon" icon={faChartBar} />
       </nav>
     </header>
   )

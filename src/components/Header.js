@@ -11,7 +11,7 @@ const Header = () => {
         id='search'
         placeholder='search'
       />
-      <h2>x</h2>
+      <h2>x x x x</h2>
     </header>
   )
 }

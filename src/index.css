@@ -38,7 +38,7 @@ header {
   background-color: rgb(0, 0, 0, .5);
   color: lime;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   padding: .5em;
 }

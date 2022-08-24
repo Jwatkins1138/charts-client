@@ -29,9 +29,43 @@ code {
     monospace;
 }
 
+@font-face {
+  font-family: 'lab';
+  src: url('./assets/LABTSEC_.ttf'), format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'q';
+  src: url('./assets/qhyts___.ttf'), format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
 a {
   text-decoration: none;
   color: lime;
+}
+h1 {
+  font-family: 'q';
+}
+
+h2 {
+  font-family: 'q';
+}
+
+h3 {
+  font-family: 'q';
+}
+
+h4 {
+  font-family: 'lab';
+}
+
+h5 {
+  font-family: 'lab';
+  margin: 0;
 }
 
 header {
@@ -54,7 +88,11 @@ aside {
   align-items: center;
 }
 
-input[type=text] {
+input {
+  margin: .5em;
+}
+
+input[type=text], input[type=password], input[type=email] {
   padding: .5em;
   background: rgb(255, 255, 255, .5);
   border-radius: 5%;
@@ -111,18 +149,20 @@ button:hover {
   to { transform: translateY(0%); }
 }
 
-main {
-  display: flex;
-}
 
 .home {
   display: flex;
   height: 100%;
 }
 
-.home-main {
+main {
   height: 100%;
   width: 100%;
+  display: flex;
+}
+
+.home-main {
+  
   background: url('./assets/arrow.svg');
   background-position: center;
   background-repeat: no-repeat;
@@ -164,6 +204,15 @@ main {
   align-items: center;
 }
 
+.sign-up-main {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  padding: 1em;
+  justify-content: center;
+  align-items: center;
+}
+
 .form-card {
   padding: 1em;
   display: flex;
@@ -177,4 +226,19 @@ main {
   display: flex;
   align-items: center;
   border-top: 1px solid rgb(255, 69, 0, .5);
+  padding-top: 1em;
+  margin-top: .5em;
+}
+
+.sign-up {
+  display: flex;
+}
+
+form {
+  padding: 1em;
+  background: black;
+  color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgb(255, 69, 0, .5);
 }

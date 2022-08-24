@@ -14,7 +14,7 @@ const Test = () => {
         // email: '4goushoryuken@gmail.com',
         // password: 'password',
         // username: 'test',
-        email: 'test@test.com',
+        email: 'test6@test.com',
         password: 'testpass',
       }
     };

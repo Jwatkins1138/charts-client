@@ -75,6 +75,7 @@ header {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  flex-wrap: wrap;
   padding: .5em;
   
 }
@@ -102,6 +103,10 @@ aside {
 
 .head-search > input {
   margin-right: 0;
+}
+
+.header-side {
+  display: flex;
 }
 
 input {

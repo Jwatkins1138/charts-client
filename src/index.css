@@ -211,6 +211,19 @@ main {
   z-index: -1;
 }
 
+.chart-main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background: black;
+}
+
+.chart-bar {
+  height: 100%;
+  border-bottom: 1px solid aqua;
+}
+
 #loading-text {
   color: orange;
   position: absolute;

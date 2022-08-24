@@ -1,5 +1,6 @@
 import Header from './Header'
 import SubHeader from './SubHeader'
+import { LogOut, CurrentUser } from '../helpers'
 
 const Test = () => {
 
@@ -72,18 +73,18 @@ const Test = () => {
       .catch((err) => console.error(err));
   }
 
-  const currentUser = () => {
-    const url = `http://localhost:3001/member/data`;
-    fetch(url, {
-      method: 'get',
-      // credentials: 'include',
-      headers: {
-        'Authorization': localStorage.token,
-        'Content-Type': 'application/json',
-      }
-    })
-    .then((res) => console.log(res));
-  }
+  // const currentUser = () => {
+  //   const url = `http://localhost:3001/member/data`;
+  //   fetch(url, {
+  //     method: 'get',
+  //     // credentials: 'include',
+  //     headers: {
+  //       'Authorization': localStorage.token,
+  //       'Content-Type': 'application/json',
+  //     }
+  //   })
+  //   .then((res) => console.log(res));
+  // }
 
   const token = () => {
     console.log(localStorage.token);
@@ -100,8 +101,9 @@ const Test = () => {
             <div className='card-footer'>
               <button onClick={signUp}>sign up</button>
               <button onClick={logIn}>log in</button>
-              <button onClick={currentUser}>user?</button>
+              <button onClick={CurrentUser}>user?</button>
               <button onClick={token}>token</button>
+              <button onClick={LogOut}>log out</button>
             </div>
           </div>
         </div>

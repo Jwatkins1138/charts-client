@@ -38,6 +38,7 @@ const Login = () => {
       setEmail('');
       setPassword('');
       setSuccess(true);
+      console.log(response);
     } catch (err) {
       if (!err?.response) {
         setErrMsg("no server response");

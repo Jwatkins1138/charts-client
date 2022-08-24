@@ -37,8 +37,8 @@ code {
 }
 
 @font-face {
-  font-family: 'lab';
-  src: url('./assets/LABTSECB.ttf') format('truetype');
+  font-family: 'good';
+  src: url('./assets/GOODTIME.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
 }
@@ -60,12 +60,12 @@ h3 {
 }
 
 h4 {
-  font-family: 'lab';
+  font-family: 'good';
   margin: 0;
 }
 
 h5 {
-  font-family: 'lab';
+  font-family: 'good';
   margin: 0;
 }
 

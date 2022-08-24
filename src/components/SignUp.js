@@ -1,5 +1,6 @@
 import axios from '../api/axios'
 import React, { useRef, useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import Header from './Header'
 import SubHeader from './SubHeader'
 
@@ -96,7 +97,7 @@ const SignUp = () => {
               />
               <button>sign up</button>
               <div className='card-footer'>
-                <span>already have an account? login</span>
+                <span>already have an account? <Link to='/login'><div className='nav-item'><h5>login</h5></div></Link></span>
               </div>
             </form>
           </section>

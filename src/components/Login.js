@@ -1,5 +1,6 @@
 import axios from '../api/axios'
 import React, { useRef, useState, useEffect, useContext } from 'react'
+import { Link } from 'react-router-dom'
 import Header from './Header'
 import SubHeader from './SubHeader'
 import AuthContext from '../context/AuthProvider'
@@ -96,9 +97,9 @@ const Login = () => {
                     value={password}
                     required
                   />
-                  <button>sign up</button>
+                  <button>login</button>
                   <div className='card-footer'>
-                    <span>don't have an account? sign up</span>
+                    <span>don't have an account? <Link to='/signup'><div className='nav-item'><h5>sign up</h5></div></Link></span>
                   </div>
                 </form>
               </section>

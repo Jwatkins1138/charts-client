@@ -107,6 +107,7 @@ aside {
 
 .header-side {
   display: flex;
+  align-items: center;
 }
 
 input {

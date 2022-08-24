@@ -31,14 +31,14 @@ code {
 
 @font-face {
   font-family: 'q';
-  src: url('./assets/qhyts___.ttf'), format('truetype');
+  src: url('./assets/qhyts___.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'lab';
-  src: url('./assets/LABTSEC_.ttf'), format('truetype');
+  src: url('./assets/LABTSECB.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
 }
@@ -61,6 +61,7 @@ h3 {
 
 h4 {
   font-family: 'lab';
+  margin: 0;
 }
 
 h5 {

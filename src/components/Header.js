@@ -12,11 +12,11 @@ const Header = () => {
   return (
     <header>
       <div className='head-title'>
-        <Link to='/'><h2>allcharts.site <FontAwesomeIcon icon={faChartLine} /></h2></Link>
+        <Link to='/'><h1>AllCharts.site <FontAwesomeIcon icon={faChartLine} /></h1></Link>
       </div>
       <div className='head-search'>
       <label htmlFor="search">
-        search ticker: 
+        ticker: 
       </label>
       <input
         type='text'
@@ -29,7 +29,7 @@ const Header = () => {
         <>
         {localStorage.token ? (
           <>
-          <span>logged in as: <i>{auth.email}</i></span>
+          <span>logged in as: <b>{auth.email}</b></span>
           <FontAwesomeIcon className="nav-icon" icon={faUser} />
           </>
         ) : (

@@ -8,6 +8,7 @@ const SubHeader = () => {
       <Link to='/loading'><div className='nav-item'><h5>load</h5></div></Link>
       <Link to='/test'><div className='nav-item'><h5>test</h5></div></Link>
       <Link to='/chart'><div className='nav-item'><h5>chart</h5></div></Link>
+      <Link to='/profile'><div className='nav-item'><h5>profile</h5></div></Link>
     </nav>
   )
 }

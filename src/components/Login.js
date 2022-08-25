@@ -29,10 +29,12 @@ const Login = () => {
         LOGIN_URL,
         JSON.stringify(user),
         {
-          headers: {'Content-Type': 'application/json'},
+          headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
           withCredentials: false,
         }
       );
+      console.log(response);
+      localStorage.setItem("token", response.headers.get("Authorization"));
       const token = response?.data?.token;
       const Uid = response?.data?.Uid;
       setAuth({ email, password, token, Uid });

@@ -4,6 +4,7 @@ import Loading from './components/Loading'
 import SignUp from './components/SignUp'
 import Login from './components/Login'
 import Chart from './components/Chart'
+import Profile from './components/Profile'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path='/signup' element={<SignUp />} />
         <Route path='/login' element={<Login />} />
         <Route path='/chart' element={<Chart />} />
+        <Route path='/profile' element={<Profile />} />
       </Routes>
     </BrowserRouter>  
   );

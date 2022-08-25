@@ -1,6 +1,7 @@
 import Header from './Header'
 import SubHeader from './SubHeader'
-import { LogOut, CurrentUser } from '../helpers'
+import axios from '../api/axios'
+import { currentUser, logOut } from '../helpers'
 
 const Test = () => {
 
@@ -44,16 +45,15 @@ const Test = () => {
   const logIn = () => {
     console.log(localStorage.token);
     // const url = 'https://ancient-plateau-95772.herokuapp.com/signup';
-    const url = 'http://localhost:3001/api/users/login'
+    const url = 'http://localhost:3001/users/sign_in'
     const user = {
       user: {
-        email: 'test@test.com',
+        email: 'testt@test.com',
         password: 'testpass',
       }
     };
     fetch(url, {
       method: 'post',
-      credentials: 'include',
       headers: {
         
         'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ const Test = () => {
   }
 
   // const currentUser = () => {
-  //   const url = `http://localhost:3001/member/data`;
+  //   const USER_URL = `/member/data`;
   //   fetch(url, {
   //     method: 'get',
   //     // credentials: 'include',
@@ -84,7 +84,11 @@ const Test = () => {
   //     }
   //   })
   //   .then((res) => console.log(res));
-  // }
+  // };
+
+  
+
+  
 
   const token = () => {
     console.log(localStorage.token);
@@ -101,9 +105,9 @@ const Test = () => {
             <div className='card-footer'>
               <button onClick={signUp}>sign up</button>
               <button onClick={logIn}>log in</button>
-              <button onClick={CurrentUser}>user?</button>
+              <button onClick={console.log(currentUser)}>user?</button>
               <button onClick={token}>token</button>
-              <button onClick={LogOut}>log out</button>
+              <button onClick={logOut}>log out</button>
             </div>
           </div>
         </div>

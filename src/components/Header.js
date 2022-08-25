@@ -35,7 +35,6 @@ const Header = () => {
         ) : (
           <>
           <Link to='/login'><button>login</button></Link>
-          <span> or </span>
           <Link to='/signup'><button>sign up</button></Link>
           </>
         )}

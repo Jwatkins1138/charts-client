@@ -44,7 +44,7 @@ const Login = () => {
       if (!err?.response) {
         setErrMsg("no server response");
       } else {
-        setErrMsg("registration failed");
+        setErrMsg("login failed");
       }
       errRef.current.focus();
     }
@@ -62,13 +62,13 @@ const Login = () => {
           <>
             {success ? (
               <section>
-                <h2>you are logged in</h2>
+                <h2 className='success'>you are logged in</h2>
               </section>
             ) : (
               <section>
                 <p
                   ref={errRef}
-                  className={errMsg ? 'errmsg' : 'offscreen'}
+                  className={errMsg ? 'errMsg' : 'offscreen'}
                   aria-live='assertive'
                 >
                   {errMsg}

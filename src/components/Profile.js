@@ -7,8 +7,9 @@ const Profile = () => {
   const [email, setEmail] = useState('');
   const [user, setUser] = useState({});
   useEffect(() => {
-    const tempUser = currentUser();
-    setUser(tempUser);
+    currentUser().then((res) => {
+      setUser(res);
+    });
   }, []);
 
   return (
@@ -20,6 +21,7 @@ const Profile = () => {
         <div className='chart-main'>
           <button onClick={() => {console.log(user)}}>user</button>
           <button onClick={() => {console.log(currentUser())}}>user</button>
+          <h1>{user.email}</h1>
           <div className='chart-bar'></div>
           <div className='chart-bar'></div>
           <div className='chart-bar'></div>

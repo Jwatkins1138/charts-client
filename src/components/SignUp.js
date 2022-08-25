@@ -97,7 +97,7 @@ const SignUp = () => {
               />
               <button>sign up</button>
               <div className='card-footer'>
-                <span>already have an account? <Link to='/login'><div className='nav-item'><h5>login</h5></div></Link></span>
+                <span>already have an account? <Link to='/login'><div className='footer-item'><h5>login</h5></div></Link></span>
               </div>
             </form>
           </section>

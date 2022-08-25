@@ -138,6 +138,19 @@ label {
   padding: .5em;
 }
 
+.footer-item {
+  padding: .5em;
+  color: gold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-item:hover {
+  background: gold;
+  color: black;
+}
+
 .nav-icon {
   margin-left: .25em;
   margin-right: .25em;

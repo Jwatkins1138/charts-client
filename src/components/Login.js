@@ -99,7 +99,7 @@ const Login = () => {
                   />
                   <button>login</button>
                   <div className='card-footer'>
-                    <span>don't have an account? <Link to='/signup'><div className='nav-item'><h5>sign up</h5></div></Link></span>
+                    <span>don't have an account? <Link to='/signup'><div className='footer-item'><h5>sign up</h5></div></Link></span>
                   </div>
                 </form>
               </section>

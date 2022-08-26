@@ -4,12 +4,19 @@ import { faChartLine } from '@fortawesome/free-solid-svg-icons'
 import { faUser } from '@fortawesome/free-regular-svg-icons'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { faGripLinesVertical } from '@fortawesome/free-solid-svg-icons'
-import { useContext } from 'react'
-import AuthContext from '../context/AuthProvider'
+import { useState, useEffect } from 'react'
+import { currentUser } from '../helpers'
+// import AuthContext from '../context/AuthProvider'
 
 const Header = () => {
-  const { auth } = useContext(AuthContext);
+  // const { auth } = useContext(AuthContext);
   // const loggedIn = ()
+  const [user, setUser] = useState({});
+  useEffect(() => {
+    currentUser().then((res) => {
+      setUser(res);
+    });
+  }, []);
   return (
     <header>
       <div className='head-title'>
@@ -28,10 +35,10 @@ const Header = () => {
       </div>
       <nav className='header-side'>
         <>
-        {(localStorage.token && auth.email) ? (
+        { user ? (
           <>
-          <span>logged in as: <b>{auth.email}</b></span>
-          <FontAwesomeIcon className="nav-icon" icon={faUser} />
+          <span>logged in as: <b>{user.email}</b></span>
+          <Link to='/profile'><FontAwesomeIcon className="nav-icon" icon={faUser} /></Link>
           </>
         ) : (
           <>

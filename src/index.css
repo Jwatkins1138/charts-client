@@ -108,6 +108,7 @@ aside {
 .header-side {
   display: flex;
   align-items: center;
+  color: gold;
 }
 
 input {
@@ -241,6 +242,14 @@ main {
 .chart-bar {
   height: 100%;
   border-bottom: 1px solid aqua;
+}
+
+.profile-main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  color: aqua;
 }
 
 #loading-text {

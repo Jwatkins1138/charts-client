@@ -2,9 +2,9 @@ import { currentUser, logOut } from '../helpers'
 import React, { useState, useEffect } from 'react'
 import Header from './Header'
 import SubHeader from './SubHeader'
+import { Link } from 'react-router-dom'
 
 const Profile = () => {
-  const [email, setEmail] = useState('');
   const [user, setUser] = useState({});
   useEffect(() => {
     currentUser().then((res) => {
@@ -16,18 +16,22 @@ const Profile = () => {
     <div className='container'>
       <Header />
       <SubHeader />
-      <main className='chart'>
+      <main className='profile'>
         <aside></aside>
-        <div className='chart-main'>
-          <button onClick={() => {console.log(user)}}>user</button>
-          <button onClick={() => {console.log(currentUser())}}>user</button>
-          <h1>{user.email}</h1>
-          <div className='chart-bar'></div>
-          <div className='chart-bar'></div>
-          <div className='chart-bar'></div>
-          <div className='chart-bar'></div>
-          <div className='chart-bar'></div>
-          <div className='chart-bar'></div>
+        <div className='profile-main'>
+        <>
+        { user ? (
+          <>
+          <h2>{user.email}</h2>
+          <button onClick={logOut}>log out</button>
+          </>
+        ) : (
+          <>
+          <Link to='/login'><button>login</button></Link>
+          <Link to='/signup'><button>sign up</button></Link>
+          </>
+        )}
+        </>
         </div>
         <aside></aside>
       </main>

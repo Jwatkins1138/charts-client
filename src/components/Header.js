@@ -13,9 +13,11 @@ const Header = () => {
   // const loggedIn = ()
   const [user, setUser] = useState({});
   useEffect(() => {
-    currentUser().then((res) => {
-      setUser(res);
-    });
+    if (localStorage.token) {
+      currentUser().then((res) => {
+        setUser(res);
+      });
+    }
   }, []);
   return (
     <header>
@@ -35,7 +37,7 @@ const Header = () => {
       </div>
       <nav className='header-side'>
         <>
-        { user ? (
+        { user.length > 0 ? (
           <>
           <span>logged in as: <b>{user.email}</b></span>
           <Link to='/profile'><FontAwesomeIcon className="nav-icon" icon={faUser} /></Link>

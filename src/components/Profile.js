@@ -7,9 +7,11 @@ import { Link } from 'react-router-dom'
 const Profile = () => {
   const [user, setUser] = useState({});
   useEffect(() => {
-    currentUser().then((res) => {
-      setUser(res);
-    });
+    if (localStorage.token) {
+      currentUser().then((res) => {
+        setUser(res);
+      });
+    }
   }, []);
 
   return (
@@ -20,7 +22,7 @@ const Profile = () => {
         <aside></aside>
         <div className='profile-main'>
         <>
-        { user ? (
+        { user.length > 0 ? (
           <>
           <h2>{user.email}</h2>
           <button onClick={logOut}>log out</button>

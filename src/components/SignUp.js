@@ -31,6 +31,7 @@ const SignUp = () => {
           withCredentials: false,
         }
       );
+      localStorage.setItem("token", response.headers.get("Authorization"));
       setSuccess(true);
       setEmail('');
       setPassword('');

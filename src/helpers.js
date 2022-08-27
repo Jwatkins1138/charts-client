@@ -1,5 +1,6 @@
 import axios from './api/axios'
 
+
 export const currentUser = () => {
   const USER_URL = '/member/data';
   return axios.get(
@@ -19,8 +20,9 @@ export const currentUser = () => {
 };
 
 export const logOut = () => {
+  
   const LOGOUT_URL = '/users/sign_out';
-  axios.delete(
+  return axios.delete(
     LOGOUT_URL,
     {
       headers: {'Authorization': localStorage.token,
@@ -29,9 +31,10 @@ export const logOut = () => {
   )
   .then(response => {
     console.log(response);
+    localStorage.clear();
+    return response;
   })
   .catch(err => {
     console.log(err);
   })
-  localStorage.clear();
 };

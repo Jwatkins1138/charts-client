@@ -115,6 +115,10 @@ input {
   margin: .5em;
 }
 
+.success {
+  color: lime;
+}
+
 input[type=text], input[type=password], input[type=email] {
   padding: .5em;
   background: rgb(255, 255, 255, .5);
@@ -237,6 +241,7 @@ main {
   height: 100%;
   width: 100%;
   background: black;
+  color: lightcyan;
 }
 
 .chart-bar {

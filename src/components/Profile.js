@@ -1,10 +1,12 @@
 import { currentUser, logOut } from '../helpers'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import Header from './Header'
 import SubHeader from './SubHeader'
 import { Link } from 'react-router-dom'
+import AuthContext from '../context/AuthProvider'
 
 const Profile = () => {
+  const { setAuth } = useContext(AuthContext);
   const [user, setUser] = useState({});
   useEffect(() => {
     if (localStorage.token) {
@@ -14,6 +16,16 @@ const Profile = () => {
     }
   }, []);
 
+  const authLog = async () => {
+    logOut().then((res) => {
+      console.log(res);
+      if (res) {
+        setUser({});
+        setAuth({login: false});
+      }
+    })
+  };
+
   return (
     <div className='container'>
       <Header />
@@ -22,10 +34,10 @@ const Profile = () => {
         <aside></aside>
         <div className='profile-main'>
         <>
-        { user.length > 0 ? (
+        { (user && user.id) ? (
           <>
           <h2>{user.email}</h2>
-          <button onClick={logOut}>log out</button>
+          <button onClick={authLog}>log out</button>
           </>
         ) : (
           <>

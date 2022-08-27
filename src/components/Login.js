@@ -4,55 +4,111 @@ import { Link } from 'react-router-dom'
 import Header from './Header'
 import SubHeader from './SubHeader'
 import AuthContext from '../context/AuthProvider'
+import { currentUser, logOut } from '../helpers'
 
 const Login = () => {
 
-  const { setAuth } = useContext(AuthContext);
+  const { auth, setAuth } = useContext(AuthContext);
   const emailRef = useRef();
   const errRef = useRef();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
+  const [user, setUser] = useState({});
+
   useEffect(() => {
+    if (localStorage.token) {
+      currentUser().then((res) => {
+        setUser(res);
+      });
+    }
+  }, [auth]);
+  
+  useEffect(() => {
+    if (emailRef) {
     emailRef.current.focus();
+    }
   }, []);
-  const LOGIN_URL = '/users/sign_in'
+
+  const authLog = async () => {
+    logOut().then((res) => {
+      console.log(res);
+      if (res) {
+        setUser({});
+        setSuccess(false);
+        setAuth({login: false});
+      }
+    })
+  };
+
+  // const LOGIN_URL = '/users/sign_in'
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = {
-      email: email,
-      password: password
-    };
-    try {
-      const response = await axios.post(
-        LOGIN_URL,
-        JSON.stringify(user),
-        {
-          headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-          withCredentials: false,
-        }
-      );
-      console.log(response);
-      localStorage.setItem("token", response.headers.get("Authorization"));
-      const token = response?.data?.token;
-      const Uid = response?.data?.Uid;
-      setAuth({ email, password, token, Uid });
-      setEmail('');
-      setPassword('');
-      setSuccess(true);
-      console.log(response);
-    } catch (err) {
-      if (!err?.response) {
-        setErrMsg("no server response");
-      } else {
-        setErrMsg("login failed");
+      user: {
+        email: email,
+        password: password
       }
-      errRef.current.focus();
-    }
+    };
+    fetch('http://localhost:3001/users/sign_in', {
+      method: 'post',
+      headers: {
+        
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => {
+        if(res.ok) {
+          console.log(res.headers.get("Authorization"));
+          localStorage.setItem("token", res.headers.get("Authorization"));
+          setEmail('');
+          setPassword('');
+          setSuccess(true);
+          setAuth({login: true});
+          return res.json();
+        } else {
+          throw new Error(res);
+        }
+      })
+      .then((json) => console.dir(json))
+      .catch((err) => {
+        if (!err?.response) {
+              setErrMsg("no server response");
+            } else {
+              setErrMsg("login failed");
+            }
+            errRef.current.focus();
+      })
+    // try {
+    //   const response = await axios.post(
+    //     LOGIN_URL,
+    //     user,
+    //     {
+    //       headers: {'Content-Type': 'application/json'},
+    //     }
+    //   );
+    //   console.log(response);
+    //   response.then((res) => { 
+    //     localStorage.setItem("token", res.headers.get("Authorization"));
+    //   })
+    //   // const token = response?.data?.token;
+    //   // const Uid = response?.data?.Uid;
+    //   // setAuth({ email, password, token, Uid });
+    //   setEmail('');
+    //   setPassword('');
+    //   setSuccess(true);
+    //   console.log(response);
+    // } catch (err) {
+    //   if (!err?.response) {
+    //     setErrMsg("no server response");
+    //   } else {
+    //     setErrMsg("login failed");
+    //   }
+    //   errRef.current.focus();
+    // }
   };
-
-  
 
   return (
     <div className='container'>
@@ -62,9 +118,10 @@ const Login = () => {
         <aside></aside>
         <div className='sign-up-main'>
           <>
-            {success ? (
+            {(success || (user && user.id))? (
               <section>
-                <h2 className='success'>you are logged in</h2>
+                <h2 className='success'>you are logged in as: {user && user.id ? user.email : ''}</h2>
+                <button onClick={authLog}>log out</button>
               </section>
             ) : (
               <section>

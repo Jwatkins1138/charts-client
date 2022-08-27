@@ -238,6 +238,7 @@ main {
 .chart-main {
   display: flex;
   flex-direction: column;
+  padding: .5em;
   height: 100%;
   width: 100%;
   background: black;

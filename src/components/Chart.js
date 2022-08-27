@@ -59,7 +59,6 @@ const Chart = () => {
       .then((json) => {
         console.log(json);
         setDdata(json['Time Series (Daily)']);
-        setLoading(false);
       })
       .then(() => {
         dailyToA();
@@ -82,9 +81,15 @@ const Chart = () => {
     }
     setDddata(ddataa);
     console.log(ddataa);
+    setLoading(false);
   }
 
   return (
+    <>
+    {loading ? (
+      <Loading />
+    ) : (
+      <>
     <div className='container'>
       <Header />
       <SubHeader />
@@ -99,12 +104,15 @@ const Chart = () => {
           )}
           </>
           {dddata.map((object, i) => {
-            return (<div className='chart-bar'><span>{i}</span><span>{object}</span></div>)
+            return (<div key={i} className='chart-bar'><span>{i}</span><span>{object}</span></div>)
           })}
         </div>
         <aside></aside>
       </main>
     </div>
+    </>
+    )}
+    </>
   )
 }
 export default Chart;

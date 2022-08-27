@@ -60,6 +60,8 @@ const Chart = () => {
         console.log(json);
         setDdata(json['Time Series (Daily)']);
         setLoading(false);
+      })
+      .then(() => {
         dailyToA();
       })
       .catch((err) => console.error(err));

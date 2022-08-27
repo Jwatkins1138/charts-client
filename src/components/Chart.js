@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react'
 import Header from './Header'
 import SubHeader from './SubHeader'
+import Loading from './Loading'
 
 const Chart = () => {
+  const [dddata, setDddata] = useState([]);
   const [ddata, setDdata] = useState({});
   const [meta, setMeta] = useState({});
   const [data, setData] = useState({});
+  const [loading, setLoading] = useState(true);
   
   const key = 'FVE7LEZWLKOMWHDH';
   const intraUrl = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=${key}`;
@@ -56,6 +59,8 @@ const Chart = () => {
       .then((json) => {
         console.log(json);
         setDdata(json['Time Series (Daily)']);
+        setLoading(false);
+        dailyToA();
       })
       .catch((err) => console.error(err));
   }
@@ -63,13 +68,18 @@ const Chart = () => {
   useEffect(() => {
     getData();
     getDaily();
+    
   }, [])
 
-  const checkData = () => {
-    console.log(data);
-  }
-  const checkMeta = () => {
-    console.log(meta);
+  
+
+  const dailyToA = () => {
+    const ddataa = [];
+    for (const item in ddata) {
+      ddataa.push(ddata[item]['1. open']);
+    }
+    setDddata(ddataa);
+    console.log(ddataa);
   }
 
   return (
@@ -86,14 +96,9 @@ const Chart = () => {
           <></>
           )}
           </>
-          <button onClick={checkData}>check</button>
-          <button onClick={checkMeta}>meta</button>
-          <div className='chart-bar'></div>
-          <div className='chart-bar'></div>
-          <div className='chart-bar'></div>
-          <div className='chart-bar'></div>
-          <div className='chart-bar'></div>
-          <div className='chart-bar'></div>
+          {dddata.map((object, i) => {
+            return (<div className='chart-bar'><span>{i}</span><span>{object}</span></div>)
+          })}
         </div>
         <aside></aside>
       </main>

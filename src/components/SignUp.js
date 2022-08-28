@@ -1,4 +1,4 @@
-import axios from '../api/axios'
+import { main } from '../api/axios'
 import React, { useRef, useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Header from './Header'
@@ -23,7 +23,7 @@ const SignUp = () => {
       password: password
     };
     try {
-      const response = await axios.post(
+      const response = await main.post(
         REGISTER_URL,
         JSON.stringify({user}),
         {

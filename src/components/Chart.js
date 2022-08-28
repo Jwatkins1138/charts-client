@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import Header from './Header'
 import SubHeader from './SubHeader'
 import Loading from './Loading'
+import axios from 'axios'
+import { alpha } from '../api/axios'
 
 const Chart = () => {
   const [dddata, setDddata] = useState([]);
@@ -11,8 +13,28 @@ const Chart = () => {
   const [loading, setLoading] = useState(true);
   
   const key = 'FVE7LEZWLKOMWHDH';
-  const intraUrl = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=${key}`;
-  const dailyUrl = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=${key}`
+  const intraUrl = `/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=${key}`;
+  const dailyUrl = `/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=${key}`;
+
+  const one = alpha.get(intraUrl);
+  const two = alpha.get(dailyUrl);
+
+  const getAllData = () => {
+    axios.all([one, two])
+    .then(axios.spread((...responses) => {
+      const resOne = responses[0];
+      const resTwo = responses[1];
+      setMeta(resOne.data['Meta Data']);
+      setData(resOne.data['Time Series (5min)']);
+      setDdata(resTwo.data['Time Series (Daily)']);
+      console.log(resOne);
+      console.log(resTwo);
+    }))
+    .catch((err) => console.error(err))
+    .then(() => {
+      dailyToA();
+    })
+  }
 
   const getData = () => {
     fetch(intraUrl, {
@@ -67,8 +89,7 @@ const Chart = () => {
   }
   
   useEffect(() => {
-    getData();
-    getDaily();
+    getAllData();
     
   }, [])
 
@@ -81,6 +102,9 @@ const Chart = () => {
     }
     setDddata(ddataa);
     console.log(ddataa);
+    console.log(ddata);
+    console.log(data);
+    console.log(meta);
     setLoading(false);
   }
 

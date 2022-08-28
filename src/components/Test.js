@@ -1,6 +1,6 @@
 import Header from './Header'
 import SubHeader from './SubHeader'
-import axios from '../api/axios'
+import { main } from '../api/axios'
 import { currentUser, logOut } from '../helpers'
 import AuthContext from '../context/AuthProvider'
 import { useContext } from 'react'

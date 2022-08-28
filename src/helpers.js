@@ -1,9 +1,9 @@
-import axios from './api/axios'
+import { main } from './api/axios'
 
 
 export const currentUser = () => {
   const USER_URL = '/member/data';
-  return axios.get(
+  return main.get(
           USER_URL,
           {
             headers: {'Authorization': localStorage.token,
@@ -22,7 +22,7 @@ export const currentUser = () => {
 export const logOut = () => {
   
   const LOGOUT_URL = '/users/sign_out';
-  return axios.delete(
+  return main.delete(
     LOGOUT_URL,
     {
       headers: {'Authorization': localStorage.token,

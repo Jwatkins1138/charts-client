@@ -96,7 +96,7 @@ const Chart = () => {
   useEffect(() => {
     dailyToA();
     
-  }, [dddata])
+  }, [ddata])
 
   
 

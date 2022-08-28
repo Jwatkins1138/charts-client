@@ -93,6 +93,11 @@ const Chart = () => {
     
   }, [])
 
+  useEffect(() => {
+    dailyToA();
+    
+  }, [dddata])
+
   
 
   const dailyToA = () => {

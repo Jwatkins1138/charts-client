@@ -127,13 +127,13 @@ const Chart = () => {
         <div className='chart-main'>
           <>
           {(meta && meta['2. Symbol']) ? (
-          <div className='chart-header'>symbol: {meta['2. Symbol']}{ddata['2022-08-26']['4. close']}</div>
+          <div className='chart-header'><span>intraday prices</span><span><b>symbol: {meta['2. Symbol']}</b></span><span>close: ${ddata['2022-08-26']['4. close']}</span></div>
           ) : (
           <></>
           )}
           </>
           {dddata.map((object, i) => {
-            return (<div key={i} className='chart-bar'><span>{i}</span><span>{object}</span></div>)
+            return (<div key={i} className='chart-bar'><span>{i}</span><span>${object}</span></div>)
           })}
         </div>
         <aside></aside>

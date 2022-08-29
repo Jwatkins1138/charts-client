@@ -1,11 +1,14 @@
 import { main } from '../api/axios'
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import Header from './Header'
 import SubHeader from './SubHeader'
+import AuthContext from '../context/AuthProvider'
+import { currentUser, logOut } from '../helpers'
 
 
 const SignUp = () => {
+  const { auth, setAuth } = useContext(AuthContext);
   const emailRef = useRef();
   const errRef = useRef();
   const [email, setEmail] = useState('');
@@ -14,40 +17,66 @@ const SignUp = () => {
   const [passwordFocus, setPasswordFocus] = useState(false);
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
+  const [user, setUser] = useState({});
 
   const REGISTER_URL = '/users'
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = {
-      email: email,
-      password: password
+      user: {
+        email: email,
+        password: password
+      }
     };
-    try {
-      const response = await main.post(
-        REGISTER_URL,
-        JSON.stringify({user}),
-        {
-          headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
-          withCredentials: false,
-        }
-      );
-      localStorage.setItem("token", response.headers.get("Authorization"));
-      setSuccess(true);
+    main.post(REGISTER_URL, user,
+      {
+        headers: {
+                'Content-Type': 'application/json',
+              },
+      })
+    .then((res) => {
+      console.log(res);
+      localStorage.setItem("token", res.headers["authorization"]);
       setEmail('');
       setPassword('');
-    } catch (err) {
+      setSuccess(true);
+      setAuth({login: true});
+    })
+    .catch((err) => {
       if (!err?.response) {
-        setErrMsg("no server response");
-      } else {
-        setErrMsg("registration failed");
-      }
-      errRef.current.focus();
-    }
+            setErrMsg("no server response");
+          } else {
+            setErrMsg("registration failed");
+          }
+          errRef.current.focus();
+    })
   };
 
   useEffect(() => {
+    if (localStorage.token) {
+      currentUser().then((res) => {
+        setUser(res);
+      });
+    }
+  }, [auth]);
+
+  useEffect(() => {
+    if (emailRef) {
     emailRef.current.focus();
+    }
   }, []);
+
+  const authLog = async () => {
+    logOut().then((res) => {
+      console.log(res);
+      if (res) {
+        setUser({});
+        setSuccess(false);
+        setAuth({login: false});
+      }
+    })
+  };
 
 
 
@@ -59,6 +88,12 @@ const SignUp = () => {
         <aside></aside>
         <div className='sign-up-main'>
         <>
+          {(success || (user && user.id))? (
+              <section>
+                <h2 className='success'>you are logged in as: {user && user.id ? user.email : ''}</h2>
+                <button onClick={authLog}>log out</button>
+              </section>
+            ) : (
           <section>
             <p 
               ref={errRef}
@@ -102,6 +137,7 @@ const SignUp = () => {
               </div>
             </form>
           </section>
+        )}  
         </>
         </div>
         <aside></aside>

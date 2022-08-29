@@ -245,11 +245,19 @@ main {
   color: lightcyan;
 }
 
+.chart-header {
+  color: orange;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid aqua;
+}
+
 .chart-bar {
   height: 100%;
   border-bottom: 1px solid aqua;
   display: flex;
   justify-content: space-between;
+  margin: .1em;
 }
 
 .profile-main {

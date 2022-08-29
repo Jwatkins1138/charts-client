@@ -1,4 +1,4 @@
-import axios from '../api/axios'
+import { main } from '../api/axios'
 import React, { useRef, useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import Header from './Header'
@@ -42,7 +42,47 @@ const Login = () => {
     })
   };
 
-  // const LOGIN_URL = '/users/sign_in'
+  const LOGIN_URL = '/users/sign_in'
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const user = {
+  //     user: {
+  //       email: email,
+  //       password: password
+  //     }
+  //   };
+  //   fetch('http://localhost:3001/users/sign_in', {
+  //     method: 'post',
+  //     headers: {
+        
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(user),
+  //   })
+  //     .then((res) => {
+  //       if(res.ok) {
+  //         console.log(res.headers.get("Authorization"));
+  //         localStorage.setItem("token", res.headers.get("Authorization"));
+  //         setEmail('');
+  //         setPassword('');
+  //         setSuccess(true);
+  //         setAuth({login: true});
+  //         return res.json();
+  //       } else {
+  //         throw new Error(res);
+  //       }
+  //     })
+  //     .then((json) => console.dir(json))
+  //     .catch((err) => {
+  //       if (!err?.response) {
+  //             setErrMsg("no server response");
+  //           } else {
+  //             setErrMsg("login failed");
+  //           }
+  //           errRef.current.focus();
+  //     })
+  //   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = {
@@ -51,36 +91,29 @@ const Login = () => {
         password: password
       }
     };
-    fetch('http://localhost:3001/users/sign_in', {
-      method: 'post',
-      headers: {
-        
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(user),
+    main.post(LOGIN_URL, user,
+      {
+        headers: {
+                'Content-Type': 'application/json',
+              },
+      })
+    .then((res) => {
+      console.log(res);
+      localStorage.setItem("token", res.headers["authorization"]);
+      setEmail('');
+      setPassword('');
+      setSuccess(true);
+      setAuth({login: true});
     })
-      .then((res) => {
-        if(res.ok) {
-          console.log(res.headers.get("Authorization"));
-          localStorage.setItem("token", res.headers.get("Authorization"));
-          setEmail('');
-          setPassword('');
-          setSuccess(true);
-          setAuth({login: true});
-          return res.json();
-        } else {
-          throw new Error(res);
-        }
-      })
-      .then((json) => console.dir(json))
-      .catch((err) => {
-        if (!err?.response) {
-              setErrMsg("no server response");
-            } else {
-              setErrMsg("login failed");
-            }
-            errRef.current.focus();
-      })
+    .catch((err) => {
+      if (!err?.response) {
+            setErrMsg("no server response");
+          } else {
+            setErrMsg("login failed");
+          }
+          errRef.current.focus();
+    })
+  };
     // try {
     //   const response = await axios.post(
     //     LOGIN_URL,
@@ -108,7 +141,7 @@ const Login = () => {
     //   }
     //   errRef.current.focus();
     // }
-  };
+  
 
   return (
     <div className='container'>

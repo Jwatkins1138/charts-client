@@ -5,7 +5,8 @@ const alpha = axios.create({
 });
 
 const main = axios.create({
-    baseURL: 'http://localhost:3001',
+    // baseURL: 'http://localhost:3001',
+    baseURL: 'https://shrouded-sierra-98549.herokuapp.com',
   });
 
 // export default axios.create({

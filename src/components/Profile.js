@@ -1,7 +1,8 @@
 import { currentUser, logOut } from '../helpers'
 import React, { useState, useEffect, useContext } from 'react'
 import Header from './Header'
-import SubHeader from './SubHeader'
+import SideBar from './SideBar'
+import SideBarRight from './SideBarRight'
 import { Link } from 'react-router-dom'
 import AuthContext from '../context/AuthProvider'
 
@@ -30,7 +31,7 @@ const Profile = () => {
     <div className='container'>
       <Header />
       <main className='profile'>
-        <aside></aside>
+        <SideBar />
         <div className='profile-main'>
         <>
         { (user && user.id) ? (
@@ -46,7 +47,7 @@ const Profile = () => {
         )}
         </>
         </div>
-        <aside></aside>
+        <SideBarRight />
       </main>
     </div>
   )

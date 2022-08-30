@@ -1,5 +1,6 @@
 import Header from './Header'
 import SideBar from './SideBar'
+import SideBarRight from './SideBarRight'
 
 const Home = () => {
   return (
@@ -16,7 +17,7 @@ const Home = () => {
           <div className='home-bar'></div>
           <div className='fill-bar'></div>
         </div>
-        <SideBar />
+        <SideBarRight />
       </main>
     </div>
   )

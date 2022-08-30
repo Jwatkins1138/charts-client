@@ -1,12 +1,13 @@
 import Header from './Header'
-import SubHeader from './SubHeader'
+import SideBar from './SideBar'
+import SideBarRight from './SideBarRight'
 
 const Loading = () => {
   return (
     <div className='container'>
       <Header />
       <div className='home'>
-        <aside></aside>
+        <SideBar />
         <main className='home-main'>
           <div className='home-bar'></div>
           <div className='home-bar'></div>
@@ -16,7 +17,7 @@ const Loading = () => {
           <div className='home-bar'></div>
           <h1 id='loading-text'>loading...</h1>
         </main>
-        <aside></aside>
+        <SideBarRight />
       </div>
     </div>
   )

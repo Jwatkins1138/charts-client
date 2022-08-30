@@ -2,7 +2,8 @@ import { main } from '../api/axios'
 import React, { useRef, useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import Header from './Header'
-import SubHeader from './SubHeader'
+import SideBar from './SideBar'
+import SideBarRight from './SideBarRight'
 import AuthContext from '../context/AuthProvider'
 import { currentUser, logOut } from '../helpers'
 
@@ -84,7 +85,7 @@ const SignUp = () => {
     <div className='container'>
       <Header />
       <main className='sign-up'>
-        <aside></aside>
+        <SideBar />
         <div className='sign-up-main'>
         <>
           {(success || (user && user.id))? (
@@ -139,7 +140,7 @@ const SignUp = () => {
         )}  
         </>
         </div>
-        <aside></aside>
+        <SideBarRight />
       </main>
     </div>
   )

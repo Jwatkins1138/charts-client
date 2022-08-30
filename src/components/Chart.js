@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Header from './Header'
 import SideBar from './SideBar'
+import SideBarRight from './SideBarRight'
 import Loading from './Loading'
 import axios from 'axios'
 import { alpha } from '../api/axios'
@@ -135,7 +136,7 @@ const Chart = () => {
             return (<div key={i} className='chart-bar'><span>{i}</span><span>${object}</span></div>)
           })}
         </div>
-        <SideBar />
+        <SideBarRight />
       </main>
     </div>
     </>

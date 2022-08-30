@@ -6,6 +6,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { faGripLinesVertical } from '@fortawesome/free-solid-svg-icons'
 import { useState, useEffect, useContext } from 'react'
 import { currentUser } from '../helpers'
+import SubHeader from './SubHeader'
 import AuthContext from '../context/AuthProvider'
 
 const Header = () => {
@@ -24,6 +25,7 @@ const Header = () => {
   }, [auth]);
   return (
     <header>
+      <div className='head-main'>
       <div className='head-title'>
         <Link to='/'><h1>allcharts.site <FontAwesomeIcon icon={faChartLine} /></h1></Link>
       </div>
@@ -55,6 +57,8 @@ const Header = () => {
         </>
         
       </nav>
+      </div>
+      <SubHeader />
     </header>
   )
 }

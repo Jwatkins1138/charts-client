@@ -5,13 +5,13 @@ const alpha = axios.create({
 });
 
 const main = axios.create({
+    // develpment backend
     // baseURL: 'http://localhost:3001',
+
+    //production backend
     baseURL: 'https://shrouded-sierra-98549.herokuapp.com',
   });
 
-// export default axios.create({
-//   baseURL: 'http://localhost:3001',
-// });
 
 export {
   alpha,

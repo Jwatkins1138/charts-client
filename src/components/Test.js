@@ -1,5 +1,5 @@
 import Header from './Header'
-import SubHeader from './SubHeader'
+import SideBar from './SideBar'
 import { main } from '../api/axios'
 import { currentUser, logOut } from '../helpers'
 import AuthContext from '../context/AuthProvider'
@@ -107,9 +107,8 @@ const Test = () => {
   return (
     <div className='container'>
       <Header />
-      <SubHeader />
       <main className='test'>
-        <aside></aside>
+        <SideBar />
         <div className='test-main'>
           <div className='form-card'>
             <div className='card-footer'>
@@ -122,7 +121,7 @@ const Test = () => {
             </div>
           </div>
         </div>
-        <aside></aside>
+        <SideBar />
       </main>
     </div>
   )

@@ -29,7 +29,6 @@ const Profile = () => {
   return (
     <div className='container'>
       <Header />
-      <SubHeader />
       <main className='profile'>
         <aside></aside>
         <div className='profile-main'>

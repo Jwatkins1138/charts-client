@@ -43,46 +43,7 @@ const Login = () => {
   };
 
   const LOGIN_URL = '/users/sign_in'
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const user = {
-  //     user: {
-  //       email: email,
-  //       password: password
-  //     }
-  //   };
-  //   fetch('http://localhost:3001/users/sign_in', {
-  //     method: 'post',
-  //     headers: {
-        
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify(user),
-  //   })
-  //     .then((res) => {
-  //       if(res.ok) {
-  //         console.log(res.headers.get("Authorization"));
-  //         localStorage.setItem("token", res.headers.get("Authorization"));
-  //         setEmail('');
-  //         setPassword('');
-  //         setSuccess(true);
-  //         setAuth({login: true});
-  //         return res.json();
-  //       } else {
-  //         throw new Error(res);
-  //       }
-  //     })
-  //     .then((json) => console.dir(json))
-  //     .catch((err) => {
-  //       if (!err?.response) {
-  //             setErrMsg("no server response");
-  //           } else {
-  //             setErrMsg("login failed");
-  //           }
-  //           errRef.current.focus();
-  //     })
-  //   };
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     const user = {
@@ -114,39 +75,11 @@ const Login = () => {
           errRef.current.focus();
     })
   };
-    // try {
-    //   const response = await axios.post(
-    //     LOGIN_URL,
-    //     user,
-    //     {
-    //       headers: {'Content-Type': 'application/json'},
-    //     }
-    //   );
-    //   console.log(response);
-    //   response.then((res) => { 
-    //     localStorage.setItem("token", res.headers.get("Authorization"));
-    //   })
-    //   // const token = response?.data?.token;
-    //   // const Uid = response?.data?.Uid;
-    //   // setAuth({ email, password, token, Uid });
-    //   setEmail('');
-    //   setPassword('');
-    //   setSuccess(true);
-    //   console.log(response);
-    // } catch (err) {
-    //   if (!err?.response) {
-    //     setErrMsg("no server response");
-    //   } else {
-    //     setErrMsg("login failed");
-    //   }
-    //   errRef.current.focus();
-    // }
   
 
   return (
     <div className='container'>
       <Header />
-      <SubHeader />
       <main className='sign-up'>
         <aside></aside>
         <div className='sign-up-main'>

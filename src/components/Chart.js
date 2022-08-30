@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import Header from './Header'
-import SubHeader from './SubHeader'
+import SideBar from './SideBar'
 import Loading from './Loading'
 import axios from 'axios'
 import { alpha } from '../api/axios'
@@ -121,9 +121,8 @@ const Chart = () => {
       <>
     <div className='container'>
       <Header />
-      <SubHeader />
       <main className='chart'>
-        <aside></aside>
+        <SideBar />
         <div className='chart-main'>
           <>
           {(meta && meta['2. Symbol']) ? (
@@ -136,7 +135,7 @@ const Chart = () => {
             return (<div key={i} className='chart-bar'><span>{i}</span><span>${object}</span></div>)
           })}
         </div>
-        <aside></aside>
+        <SideBar />
       </main>
     </div>
     </>

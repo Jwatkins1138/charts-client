@@ -5,7 +5,6 @@ const Loading = () => {
   return (
     <div className='container'>
       <Header />
-      <SubHeader />
       <div className='home'>
         <aside></aside>
         <main className='home-main'>

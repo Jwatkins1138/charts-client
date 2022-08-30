@@ -83,7 +83,6 @@ const SignUp = () => {
   return (
     <div className='container'>
       <Header />
-      <SubHeader />
       <main className='sign-up'>
         <aside></aside>
         <div className='sign-up-main'>

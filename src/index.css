@@ -299,10 +299,9 @@ main {
 }
 
 .test-main {
-  /* height: 100%; */
+  height: 100%;
   width: 100%;
   display: flex;
-  padding: 1em;
   justify-content: center;
   align-items: center;
 }
@@ -311,7 +310,6 @@ main {
   height: 100%;
   width: 100%;
   display: flex;
-  padding: 1em;
   justify-content: center;
   align-items: center;
 }
@@ -332,10 +330,6 @@ main {
   border-top: 1px solid rgb(255, 69, 0, .5);
   padding-top: 1em;
   margin-top: .5em;
-}
-
-.sign-up {
-  display: flex;
 }
 
 form {

@@ -6,9 +6,9 @@ const Loading = () => {
   return (
     <div className='container'>
       <Header />
-      <div className='home'>
+      <main className='home'>
         <SideBar />
-        <main className='home-main'>
+        <div className='home-main'>
           <div className='home-bar'></div>
           <div className='home-bar'></div>
           <div className='home-bar'></div>
@@ -16,9 +16,9 @@ const Loading = () => {
           <div className='home-bar'></div>
           <div className='home-bar'></div>
           <h1 id='loading-text'>loading...</h1>
-        </main>
+        </div>
         <SideBarRight />
-      </div>
+      </main>
     </div>
   )
 }

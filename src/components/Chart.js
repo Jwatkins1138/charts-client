@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import Header from './Header'
 import SideBar from './SideBar'
 import SideBarRight from './SideBarRight'
@@ -12,10 +13,11 @@ const Chart = () => {
   const [meta, setMeta] = useState({});
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
+  const params = useParams();
   
   const key = 'FVE7LEZWLKOMWHDH';
-  const intraUrl = `/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=${key}`;
-  const dailyUrl = `/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=${key}`;
+  const intraUrl = `/query?function=TIME_SERIES_INTRADAY&symbol=${params.ticker}&interval=5min&apikey=${key}`;
+  const dailyUrl = `/query?function=TIME_SERIES_DAILY&symbol=${params.ticker}&apikey=${key}`;
 
   const one = alpha.get(intraUrl);
   const two = alpha.get(dailyUrl);

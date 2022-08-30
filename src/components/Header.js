@@ -5,6 +5,7 @@ import { faUser } from '@fortawesome/free-regular-svg-icons'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { faGripLinesVertical } from '@fortawesome/free-solid-svg-icons'
 import { useState, useEffect, useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { currentUser } from '../helpers'
 import SubHeader from './SubHeader'
 import AuthContext from '../context/AuthProvider'
@@ -14,6 +15,8 @@ const Header = () => {
   // const loggedIn = ()
   const { auth } = useContext(AuthContext);
   const [user, setUser] = useState({});
+  const [ticker, setTicker] = useState('');
+  const navigate = useNavigate();
   useEffect(() => {
     if (localStorage.token) {
       currentUser().then((res) => {
@@ -23,6 +26,10 @@ const Header = () => {
       setUser({});
     }
   }, [auth]);
+
+  const searchTicker = () => {
+    navigate('/chart/' + ticker);
+  }
   return (
     <header>
       <div className='head-main'>
@@ -37,8 +44,10 @@ const Header = () => {
         type='text'
         id='search'
         placeholder='search'
+        onChange={(e) => {setTicker(e.target.value)}}
+        value={ticker}
       />
-      <button><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
+      <button onClick={searchTicker}><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
       </div>
       <nav className='header-side'>
         <>

@@ -265,7 +265,7 @@ main {
   width: 100%;
   background: black;
   color: lightcyan;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .chart-header {

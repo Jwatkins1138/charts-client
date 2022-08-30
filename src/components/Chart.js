@@ -6,6 +6,7 @@ import SideBarRight from './SideBarRight'
 import Loading from './Loading'
 import axios from 'axios'
 import { alpha } from '../api/axios'
+import LineChart from './Line'
 
 const Chart = () => {
   const [dddata, setDddata] = useState([]);
@@ -118,7 +119,7 @@ const Chart = () => {
 
   return (
     <>
-    {loading ? (
+    {(loading && dddata.length < 1) ? (
       <Loading />
     ) : (
       <>
@@ -127,7 +128,7 @@ const Chart = () => {
       <main className='chart'>
         <SideBar />
         <div className='chart-main'>
-          <>
+          {/* <>
           {(meta && meta['2. Symbol']) ? (
           <div className='chart-header'><span>intraday prices</span><span><b>symbol: {meta['2. Symbol']}</b></span><span>close: ${ddata['2022-08-26']['4. close']}</span></div>
           ) : (
@@ -136,7 +137,8 @@ const Chart = () => {
           </>
           {dddata.map((object, i) => {
             return (<div key={i} className='chart-bar'><span>{i}</span><span>${object}</span></div>)
-          })}
+          })} */}
+          <LineChart data={dddata}/>
         </div>
         <SideBarRight />
       </main>

@@ -10,6 +10,7 @@ import LineChart from './Line'
 
 const Chart = () => {
   const [lineProps, setLineProps] = useState({});
+  const [time, setTime] = useState("TIME_SERIES_INTRADAY")
   const [dddata, setDddata] = useState([]);
   const [ddata, setDdata] = useState({});
   const [meta, setMeta] = useState({});
@@ -18,7 +19,7 @@ const Chart = () => {
   const params = useParams();
   
   const key = 'FVE7LEZWLKOMWHDH';
-  const intraUrl = `/query?function=TIME_SERIES_INTRADAY&symbol=${params.ticker}&interval=5min&apikey=${key}`;
+  const intraUrl = `/query?function=${time}&symbol=${params.ticker}&interval=5min&apikey=${key}`;
   const dailyUrl = `/query?function=TIME_SERIES_DAILY&symbol=${params.ticker}&apikey=${key}`;
 
   const one = alpha.get(intraUrl);
@@ -62,6 +63,7 @@ const Chart = () => {
     setLineProps({
       data: ddataa,
       symbol: params.ticker.toUpperCase(),
+      info: time
     });
     setLoading(false);
   }

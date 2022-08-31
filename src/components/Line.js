@@ -47,6 +47,11 @@ const LineChart = (props) => {
       }
     },
     plugins: {
+      title: {
+        display: true,
+        text: props.lineProps.info,
+        color: 'rgba(255, 255, 255, 1)'
+      },
       legend: {
         labels: {
           color: 'rgba(255, 255, 255, 1)'

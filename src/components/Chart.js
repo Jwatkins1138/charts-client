@@ -9,6 +9,7 @@ import { alpha } from '../api/axios'
 import LineChart from './Line'
 
 const Chart = () => {
+  const [lineProps, setLineProps] = useState({});
   const [dddata, setDddata] = useState([]);
   const [ddata, setDdata] = useState({});
   const [meta, setMeta] = useState({});
@@ -24,15 +25,15 @@ const Chart = () => {
   const two = alpha.get(dailyUrl);
 
   const getAllData = () => {
-    axios.all([one, two])
+    axios.all([one])
     .then(axios.spread((...responses) => {
       const resOne = responses[0];
-      const resTwo = responses[1];
+      // const resTwo = responses[1];
       setMeta(resOne.data['Meta Data']);
       setData(resOne.data['Time Series (5min)']);
-      setDdata(resTwo.data['Time Series (Daily)']);
-      console.log(resOne);
-      console.log(resTwo);
+      // setDdata(resTwo.data['Time Series (Daily)']);
+      // console.log(resOne);
+      // console.log(resTwo);
     }))
     .catch((err) => console.error(err))
     .then(() => {
@@ -40,58 +41,6 @@ const Chart = () => {
     })
   }
 
-  const getData = () => {
-    fetch(intraUrl, {
-      method: 'get',
-      headers: {
-        
-        'User-Agent': 'request',
-      },
-    })
-      .then((res) => {
-        if(res.ok) {
-          console.log(res);
-          setMeta(res['Meta Data']);
-          return res.json();
-        } else {
-          throw new Error(res);
-        }
-      })
-      .then((json) => {
-        setMeta(json['Meta Data']);
-        setData(json['Time Series (5min)'])
-        console.log(json);
-      })
-      .catch((err) => console.error(err));
-  }
-
-  const getDaily = () => {
-    fetch(dailyUrl, {
-      method: 'get',
-      headers: {
-        
-        'User-Agent': 'request',
-      },
-    })
-      .then((res) => {
-        if(res.ok) {
-          console.log(res);
-          setMeta(res['Meta Data']);
-          return res.json();
-        } else {
-          throw new Error(res);
-        }
-      })
-      .then((json) => {
-        console.log(json);
-        setDdata(json['Time Series (Daily)']);
-      })
-      .then(() => {
-        dailyToA();
-      })
-      .catch((err) => console.error(err));
-  }
-  
   useEffect(() => {
     getAllData();
     
@@ -100,20 +49,20 @@ const Chart = () => {
   useEffect(() => {
     dailyToA();
     
-  }, [ddata])
+  }, [data])
 
   
 
   const dailyToA = () => {
     const ddataa = [];
-    for (const item in ddata) {
-      ddataa.push(ddata[item]['1. open']);
+    for (const item in data) {
+      ddataa.unshift([data[item]['1. open'], item]);
+      // ddataa.unshift(ddata[item]['1. open']);
     }
-    setDddata(ddataa);
-    console.log(ddataa);
-    console.log(ddata);
-    console.log(data);
-    console.log(meta);
+    setLineProps({
+      data: ddataa,
+      meta: meta
+    });
     setLoading(false);
   }
 
@@ -138,7 +87,7 @@ const Chart = () => {
           {dddata.map((object, i) => {
             return (<div key={i} className='chart-bar'><span>{i}</span><span>${object}</span></div>)
           })} */}
-          <LineChart data={dddata}/>
+          <LineChart lineProps={lineProps}/>
         </div>
         <SideBarRight />
       </main>

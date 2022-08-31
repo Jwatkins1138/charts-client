@@ -13,26 +13,57 @@ const LineChart = (props) => {
 
   const parseData = () => {
     setData({
-      labels: props.data.map((object, i) => { return i}),
+      labels: props.lineProps.data.map((object) => { return object[1]}),
       datasets: [{
-        data: props.data.map((object, i) => { return object})
+        label: props.lineProps.meta["2. Symbol"],
+        data: props.lineProps.data.map((object) => { return object[0]})
     }]
     })
   };
 
   const [data, setData] = useState({
-    labels: props.data,
+    labels: props.lineProps.data.map((object) => { return object[1]}),
     datasets: [{
-      data: props.data
+      label: props.lineProps.meta["2. Symbol"],
+      data: props.lineProps.data.map((object) => { return object[0]})
     }]
   });
 
   const [options, setOptions] = useState({
     borderColor: 'rgba(0, 255, 0, 1)',
-    backgroundColor: 'rgba(0, 255, 0, 1)'
+    backgroundColor: 'rgba(0, 255, 0, 1)',
+    scales: {
+      xAxes: {
+        grid: {
+          borderColor: 'rgba(0, 0, 255, 1)',
+          color: 'rgba(0, 0, 255, .5)'
+        }
+      },
+      yAxes: {
+        grid: {
+          borderColor: 'rgba(0, 0, 255, 1)',
+          color: 'rgba(0, 0, 255, .5)'
+        }
+      }
+    },
+    plugins: {
+      title: {
+        display: true,
+        text: props.lineProps.meta["2. Symbol"] +' '+ props.lineProps.meta["1. Information"]
+      },
+      legend: {
+        labels: {
+          color: 'rgba(255, 255, 255, 1)'
+        },
+        title: {
+          color: 'rgba(255, 255, 255, 1)'
+        }
+      }
+    }
   });
 
   useEffect(() => {
+    console.log(props);
     parseData();
   }, [props])
 

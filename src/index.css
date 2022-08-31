@@ -97,17 +97,19 @@ aside {
 }
 
 .side-title {
-  color: orange;
+  color: lightgray;
+  border-bottom: .5px solid orangered;
 }
 .side-item {
   color: white;
   display: flex;
   flex-direction: column;
-  border-bottom: .5px solid orangered;
+  border-bottom: .25px solid orangered;
   padding: .25em;
+  cursor: default;
 }
  .side-item:hover {
-  background-color: rgb(0, 255, 0, .3);
+  background-color: blue;
  }
 
 .head-title {

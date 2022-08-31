@@ -7,6 +7,7 @@ import Loading from './Loading'
 import axios from 'axios'
 import { alpha } from '../api/axios'
 import LineChart from './Line'
+import ChartFooter from './ChartFooter'
 
 const Chart = () => {
   const [lineProps, setLineProps] = useState({});
@@ -90,6 +91,7 @@ const Chart = () => {
             return (<div key={i} className='chart-bar'><span>{i}</span><span>${object}</span></div>)
           })} */}
           <LineChart lineProps={lineProps}/>
+          <ChartFooter />
         </div>
         <SideBarRight />
       </main>

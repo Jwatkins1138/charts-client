@@ -61,8 +61,7 @@ const Chart = () => {
     }
     setLineProps({
       data: ddataa,
-      symbol: meta['2. Symbol'],
-      info: meta['1. Information']
+      symbol: params.ticker.toUpperCase(),
     });
     setLoading(false);
   }

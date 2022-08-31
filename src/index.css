@@ -99,13 +99,14 @@ aside {
 .side-title {
   color: lightgray;
   border-bottom: .5px solid orangered;
+  margin-top: 1em;
 }
 .side-item {
   color: white;
   display: flex;
-  flex-direction: column;
   border-bottom: .25px solid orangered;
   padding: .25em;
+  width: 80%;
   cursor: default;
 }
  .side-item:hover {

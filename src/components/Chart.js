@@ -61,7 +61,8 @@ const Chart = () => {
     }
     setLineProps({
       data: ddataa,
-      meta: meta
+      symbol: meta['2. Symbol'],
+      info: meta['1. Information']
     });
     setLoading(false);
   }

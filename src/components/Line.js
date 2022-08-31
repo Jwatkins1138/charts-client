@@ -15,7 +15,7 @@ const LineChart = (props) => {
     setData({
       labels: props.lineProps.data.map((object) => { return object[1]}),
       datasets: [{
-        label: props.lineProps.meta["2. Symbol"],
+        label: props.lineProps.symbol,
         data: props.lineProps.data.map((object) => { return object[0]})
     }]
     })
@@ -24,7 +24,7 @@ const LineChart = (props) => {
   const [data, setData] = useState({
     labels: props.lineProps.data.map((object) => { return object[1]}),
     datasets: [{
-      label: props.lineProps.meta["2. Symbol"],
+      label: props.lineProps.symbol,
       data: props.lineProps.data.map((object) => { return object[0]})
     }]
   });
@@ -47,10 +47,6 @@ const LineChart = (props) => {
       }
     },
     plugins: {
-      title: {
-        display: true,
-        text: props.lineProps.meta["2. Symbol"] +' '+ props.lineProps.meta["1. Information"]
-      },
       legend: {
         labels: {
           color: 'rgba(255, 255, 255, 1)'

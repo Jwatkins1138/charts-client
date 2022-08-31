@@ -12,19 +12,29 @@ const LineChart = (props) => {
   
 
   const parseData = () => {
-    props.data.map((object, i) => {})
-  }
+    setData({
+      labels: props.data.map((object, i) => { return i}),
+      datasets: [{
+        data: props.data.map((object, i) => { return object})
+    }]
+    })
+  };
+
   const [data, setData] = useState({
-    labels: props.data.map((object, i) => { return i}),
+    labels: props.data,
     datasets: [{
-      data: props.data.map((object, i) => { return object})
+      data: props.data
     }]
   });
 
   const [options, setOptions] = useState({
     borderColor: 'rgba(0, 255, 0, 1)',
     backgroundColor: 'rgba(0, 255, 0, 1)'
-  })
+  });
+
+  useEffect(() => {
+    parseData();
+  }, [props])
 
   return (
     <Line data={data} options={options} />

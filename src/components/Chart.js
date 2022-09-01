@@ -21,6 +21,7 @@ const Chart = () => {
 
   const changeTime = useCallback((e) => {
     setTime(e.target.id);
+    console.log("hello from chart");
   }, [],)
   
   const key = 'FVE7LEZWLKOMWHDH';

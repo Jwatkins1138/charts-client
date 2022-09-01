@@ -11,7 +11,8 @@ import ChartFooter from './ChartFooter'
 
 const Chart = () => {
   const [lineProps, setLineProps] = useState({});
-  const [time, setTime] = useState("TIME_SERIES_INTRADAY")
+  const [time, setTime] = useState("TIME_SERIES_INTRADAY");
+  const [timeRef, setTimeRef] = useState('Time Series (5min)');
   const [dddata, setDddata] = useState([]);
   const [ddata, setDdata] = useState({});
   const [meta, setMeta] = useState({});
@@ -37,7 +38,7 @@ const Chart = () => {
       const resOne = responses[0];
       // const resTwo = responses[1];
       setMeta(resOne.data['Meta Data']);
-      setData(resOne.data['Time Series (5min)']);
+      setData(resOne.data[timeRef]);
       // setDdata(resTwo.data['Time Series (Daily)']);
       console.log(resOne);
       // console.log(resTwo);
@@ -59,10 +60,29 @@ const Chart = () => {
     
   }, [data])
 
+  useEffect(() => {
+    switch(time) {
+      case "TIME_SERIES_INTRADAY":
+        setTimeRef("Time Series (5min)");
+        break;
+      case "TIME_SERIES_DAILY":
+        setTimeRef("Time Series (Daily)");
+        break;
+      case "TIME_SERIES_WEEKLY":
+        setTimeRef("Time Series (Weekly)");
+        break;
+      case "TIME_SERIES_MONTHLY":
+        setTimeRef("Time Series (Monthly)");
+        break;  
+    }
+    
+  }, [time])
+
   
 
   const dailyToA = () => {
     const ddataa = [];
+    console.log("hello from toa");
     for (const item in data) {
       ddataa.unshift([data[item]['1. open'], item]);
       // ddataa.unshift(ddata[item]['1. open']);

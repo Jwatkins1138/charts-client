@@ -69,10 +69,10 @@ const Chart = () => {
         setTimeRef("Time Series (Daily)");
         break;
       case "TIME_SERIES_WEEKLY":
-        setTimeRef("Time Series (Weekly)");
+        setTimeRef("Weekly Time Series");
         break;
       case "TIME_SERIES_MONTHLY":
-        setTimeRef("Time Series (Monthly)");
+        setTimeRef("Monthly Time Series");
         break;  
     }
     

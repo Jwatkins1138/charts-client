@@ -10,10 +10,10 @@ const SideBarRight = (props) => {
   return (
     <aside>
       <div className='side-title'><h5><FontAwesomeIcon icon={faChartSimple} />  chart options</h5></div>
-      <div className='side-item'><span>intraday(default)</span></div>
+      <div id='TIME_SERIES_INTRADAY' onClick={setTimeSeries} className='side-item'><span>intraday(default)</span></div>
       <div id='TIME_SERIES_DAILY' onClick={setTimeSeries} className='side-item'><span>daily</span></div>
-      <div className='side-item'><span>weekly</span></div>
-      <div className='side-item'><span>monthly</span></div>
+      <div id='TIME_SERIES_WEEKLY' onClick={setTimeSeries} className='side-item'><span>weekly</span></div>
+      <div id='TIME_SERIES_MONTHLY' onClick={setTimeSeries} className='side-item'><span>monthly</span></div>
       <div className='side-title'><h5><FontAwesomeIcon icon={faBars} />  other options</h5></div>
       <div className='side-item'><span>sample</span></div>
       <div className='side-item'><span>sample</span></div>

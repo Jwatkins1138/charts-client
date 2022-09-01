@@ -53,7 +53,7 @@ const Chart = () => {
     console.log(time);
     getAllData();
     
-  }, [params, time])
+  }, [params, timeRef])
 
   useEffect(() => {
     dailyToA();

@@ -3,8 +3,8 @@ import { faChartSimple } from '@fortawesome/free-solid-svg-icons'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 const SideBarRight = (props) => {
-  const testClick = () => {
-    props.changeTime();
+  const testClick = (e) => {
+    props.setTime(e.target.id);
     console.log('test clickin');
   };
 

@@ -19,10 +19,10 @@ const Chart = () => {
   const [loading, setLoading] = useState(true);
   const params = useParams();
 
-  const changeTime = useCallback((e) => {
-    setTime(e.target.id);
-    console.log("hello from chart");
-  }, [],)
+  // const changeTime = useCallback((e) => {
+  //   setTime(e.target.id);
+  //   console.log("hello from chart");
+  // }, [],)
   
   const key = 'FVE7LEZWLKOMWHDH';
   const intraUrl = `/query?function=${time}&symbol=${params.ticker}&interval=5min&apikey=${key}`;
@@ -39,7 +39,7 @@ const Chart = () => {
       setMeta(resOne.data['Meta Data']);
       setData(resOne.data['Time Series (5min)']);
       // setDdata(resTwo.data['Time Series (Daily)']);
-      // console.log(resOne);
+      console.log(resOne);
       // console.log(resTwo);
     }))
     .catch((err) => console.error(err))
@@ -49,9 +49,10 @@ const Chart = () => {
   };
 
   useEffect(() => {
+    console.log(time);
     getAllData();
     
-  }, [params])
+  }, [params, time])
 
   useEffect(() => {
     dailyToA();
@@ -98,7 +99,7 @@ const Chart = () => {
           <LineChart lineProps={lineProps}/>
           <ChartFooter />
         </div>
-        <SideBarRight changeTime={changeTime}/>
+        <SideBarRight setTime={setTime}/>
       </main>
     </div>
     </>

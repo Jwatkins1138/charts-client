@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useParams } from 'react-router-dom'
 import Header from './Header'
 import SideBar from './SideBar'
@@ -18,6 +18,10 @@ const Chart = () => {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
   const params = useParams();
+
+  const changeTime = useCallback((e) => {
+    setTime(e.target.id);
+  }, [],)
   
   const key = 'FVE7LEZWLKOMWHDH';
   const intraUrl = `/query?function=${time}&symbol=${params.ticker}&interval=5min&apikey=${key}`;
@@ -41,7 +45,7 @@ const Chart = () => {
     .then(() => {
       dailyToA();
     })
-  }
+  };
 
   useEffect(() => {
     getAllData();
@@ -93,7 +97,7 @@ const Chart = () => {
           <LineChart lineProps={lineProps}/>
           <ChartFooter />
         </div>
-        <SideBarRight />
+        <SideBarRight changeTime={changeTime}/>
       </main>
     </div>
     </>

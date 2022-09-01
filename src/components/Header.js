@@ -59,7 +59,7 @@ const Header = () => {
         ) : (
           <>
           <Link to='/login'><button>login</button></Link>
-          <FontAwesomeIcon className="nav-icon" icon={faGripLinesVertical} />
+          {/* <FontAwesomeIcon className="nav-icon" icon={faGripLinesVertical} /> */}
           <Link to='/signup'><button>sign up</button></Link>
           </>
         )}

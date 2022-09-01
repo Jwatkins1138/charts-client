@@ -166,7 +166,7 @@ input[type=text], input[type=password], input[type=email] {
   padding: .5em;
   background: rgb(255, 255, 255, .5);
   cursor: default;
-  border: 1px solid gold;
+  border: 1px solid blue;
 }
 
 label {
@@ -227,9 +227,9 @@ button {
   align-items: center;
   justify-content: center;
   padding: .5em;
-  color: orange;
+  color: lightcyan;
   background: none;
-  border: 1px solid gold;
+  border: 1px solid blue;
   min-width: 2.5em;
   max-width: 5em;
   min-height: 1.5em;

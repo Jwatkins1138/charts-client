@@ -263,7 +263,7 @@ main {
   display: flex;
   flex-direction: column;
   z-index: -2;
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 
 .home-bar {
@@ -284,7 +284,7 @@ main {
   width: 100%;
   background: black;
   color: lightcyan;
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 
 .chart-header {
@@ -307,6 +307,7 @@ main {
   height: 100%;
   width: 100%;
   color: aqua;
+  overflow-y: scroll;
 }
 
 #loading-text {

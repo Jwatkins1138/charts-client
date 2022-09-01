@@ -53,7 +53,7 @@ const Header = () => {
         <>
         { (user && user.id) ? (
           <>
-          <span>logged in as: <b>{user.email}</b></span>
+          <span>logged in as: <h3>{user.email}</h3></span>
           <Link to='/profile'><FontAwesomeIcon className="nav-icon" icon={faUser} /></Link>
           </>
         ) : (

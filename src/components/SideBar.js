@@ -115,6 +115,7 @@ const SideBar = () => {
         <div id="GOOG"className="side-item" onClick={clickItem}><span>GOOG</span></div>
         <div id="META"className="side-item" onClick={clickItem}><span>META</span></div>
         <div id="IBM"className="side-item" onClick={clickItem}><span>IBM</span></div>
+        <div className="big-spacer"></div>
         </>
       )}
       </>

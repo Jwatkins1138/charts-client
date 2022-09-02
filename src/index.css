@@ -86,6 +86,7 @@ h5 {
 header {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   height: 18vh;
 }
 
@@ -218,6 +219,7 @@ label {
   justify-content: center;
   align-items: center;
   cursor: default;
+  height: 100%;
 }
 
 .nav-item {

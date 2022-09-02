@@ -436,13 +436,15 @@ form {
 .info-area {
   display: flex;
   flex-wrap: wrap;
-  padding: 1em;
+  justify-content: space-between;
+  padding: .5em;
 }
 
 .info-item {
   padding: .5em;
   margin-left: .5em;
   margin-right: .5em;
-  border-left: .5px solid lime;
-  border-bottom: .5px solid lime;
+  margin-bottom: .5em;
+  border-left: .5px solid rgb(0, 255, 0, .5);
+  border-bottom: .5px solid rgb(0, 255, 0, .5);
 }

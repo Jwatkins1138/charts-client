@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Header from './Header'
 import SideBar from './SideBar'
@@ -117,7 +117,7 @@ const Chart = () => {
             return (<div key={i} className='chart-bar'><span>{i}</span><span>${object}</span></div>)
           })} */}
           <LineChart lineProps={lineProps}/>
-          <ChartFooter />
+          <ChartFooter ticker={params.ticker}/>
         </div>
         <SideBarRight setTime={setTime}/>
       </main>

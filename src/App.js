@@ -6,6 +6,9 @@ import Login from './components/Login'
 import Chart from './components/Chart'
 import LineChart from './components/Line'
 import Profile from './components/Profile'
+import Posts from './components/Posts'
+import About from './components/About'
+import Info from './components/Info'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 function App() {
@@ -22,6 +25,11 @@ function App() {
         <Route path='/line' element={<LineChart />} />
         <Route path='/line/:ticker' element={<LineChart />} />
         <Route path='/profile' element={<Profile />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/posts' element={<Posts />} />
+        <Route path='/posts/:ticker' element={<Posts />} />
+        <Route path='/info' element={<Info />} />
+        <Route path='/info/:ticker' element={<Info />} />
 
       </Routes>
     </BrowserRouter>  

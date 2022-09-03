@@ -125,7 +125,7 @@ const Posts = () => {
             <></>
           )}
           </>
-          {posts.map.reverse((post) => {
+          {posts.reverse().map((post) => {
             return drawPost(post);
           })}
           <ChartFooter ticker={params.ticker}/>

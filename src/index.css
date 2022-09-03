@@ -162,6 +162,7 @@ aside {
 .post-add {
   display: flex;
   justify-content: center;
+  align-items: center;
   border-bottom: 1px solid lightcyan;
   cursor: default;
 }

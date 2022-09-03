@@ -65,7 +65,8 @@ const Login = () => {
       setEmail('');
       setPassword('');
       setSuccess(true);
-      setAuth({login: true});
+      setAuth({login: true,
+                user: res.user});
     })
     .catch((err) => {
       if (!err?.response) {

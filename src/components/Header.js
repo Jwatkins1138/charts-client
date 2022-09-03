@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChartLine } from '@fortawesome/free-solid-svg-icons'
 import { faUser } from '@fortawesome/free-regular-svg-icons'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
-import { faGripLinesVertical } from '@fortawesome/free-solid-svg-icons'
 import { useState, useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { currentUser } from '../helpers'
@@ -11,16 +10,15 @@ import SubHeader from './SubHeader'
 import AuthContext from '../context/AuthProvider'
 
 const Header = () => {
-  // const { auth } = useContext(AuthContext);
-  // const loggedIn = ()
-  const { auth } = useContext(AuthContext);
+  const { auth, setAuth } = useContext(AuthContext);
   const [user, setUser] = useState({});
   const [ticker, setTicker] = useState('');
   const navigate = useNavigate();
   useEffect(() => {
-    if (localStorage.token) {
+    if (localStorage.token && !auth.user) {
       currentUser().then((res) => {
-        setUser(res);
+        setAuth({login: true,
+          user: res});
       });
     } else {
       setUser({});
@@ -51,9 +49,9 @@ const Header = () => {
       </div>
       <nav className='header-side'>
         <>
-        { (user && user.id) ? (
+        { (auth.user && auth.user.id) ? (
           <>
-          <span>logged in as: <h3>{user.email}</h3></span>
+          <span>logged in as: <h3>{auth.user.email}</h3></span>
           <Link to='/profile'><FontAwesomeIcon className="nav-icon" icon={faUser} /></Link>
           </>
         ) : (

@@ -14,6 +14,10 @@ const Test = () => {
     console.log(auth);
   }
 
+  const seeAuth = () => {
+    console.log(auth);
+  }
+
 
   // const signUp = () => {
   //   // const url = 'https://ancient-plateau-95772.herokuapp.com/signup';
@@ -140,6 +144,7 @@ const Test = () => {
               <button onClick={logOut}>log out</button>
               <button onClick={testSet}>set auth</button>
               <button onClick={testPost}>post</button>
+              <button onClick={seeAuth}>auth?</button>
             </div>
           </div>
         </div>

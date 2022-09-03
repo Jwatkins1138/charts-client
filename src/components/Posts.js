@@ -33,7 +33,7 @@ const Posts = () => {
     )
     .then(response => {
       console.log(response);
-      setPosts(response.data.posts);
+      setPosts(response.data.posts.reverse);
       setLoading(false);
     })
     .catch(err => {

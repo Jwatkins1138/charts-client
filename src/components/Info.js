@@ -55,7 +55,7 @@ const Info = () => {
             return <div className='info-item'><b>{item[0]}</b><p>{item[1]}</p></div>
           })}
           </div>
-          <ChartFooter />
+          <ChartFooter ticker={params.ticker}/>
         </div>
         <SideBarRight />
       </main>

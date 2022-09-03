@@ -58,9 +58,9 @@ const Posts = () => {
       <>
     <div className='container'>
       <Header />
-      <main className='chart'>
+      <main className='info'>
         <SideBar />
-        <div className='chart-main'>
+        <div className='info-main'>
           <header className='posts-header'><h4>What are people saying about {params.ticker}</h4></header>
           <>
           {(auth.login) ? (
@@ -72,7 +72,7 @@ const Posts = () => {
           {posts.map((post) => {
             return drawPost(post);
           })}
-          <ChartFooter />
+          <ChartFooter ticker={params.ticker}/>
         </div>
         <SideBarRight />
       </main>

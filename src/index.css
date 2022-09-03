@@ -217,7 +217,7 @@ label {
   background: rgb(0, 0, 0, .5);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   cursor: default;
   height: 100%;
 }
@@ -255,8 +255,8 @@ label {
 
 .container {
   height: 100%;
-  display: grid;
-  grid-template-rows: .5fr 8fr;
+  display: flex;
+  flex-direction: column;
 }
 
 button {
@@ -432,6 +432,8 @@ form {
   background: black;
   color: lightcyan;
   overflow-y: scroll;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 .info-area {

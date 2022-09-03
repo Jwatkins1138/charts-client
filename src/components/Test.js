@@ -120,7 +120,25 @@ const Test = () => {
     .catch(err => {
       console.log(err);
     })
-  }
+  };
+
+  const getLists = () => {
+    const LISTS_URL = `/lists/index`;
+      main.get(
+            LISTS_URL,
+            {
+              headers: {'Authorization': localStorage.token,
+                        'Content-Type': 'application/json'},
+              withCredentials: false,
+            }
+    )
+    .then(response => {
+      console.log(response);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  };
   
 
   
@@ -139,12 +157,13 @@ const Test = () => {
             <div className='card-footer'>
               {/* <button onClick={signUp}>sign up</button> */}
               <button onClick={logIn}>log in</button>
-              <button onClick={console.log(currentUser)}>user?</button>
+              {/* <button onClick={console.log(currentUser)}>user?</button> */}
               <button onClick={token}>token</button>
               <button onClick={logOut}>log out</button>
               <button onClick={testSet}>set auth</button>
               <button onClick={testPost}>post</button>
               <button onClick={seeAuth}>auth?</button>
+              <button onClick={getLists}>lists</button>
             </div>
           </div>
         </div>

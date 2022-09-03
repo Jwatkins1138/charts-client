@@ -115,6 +115,13 @@ aside {
   border-bottom: .5px solid aqua;
   margin-top: 1em;
 }
+
+.list-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .side-item {
   color: lightcyan;
   display: flex;

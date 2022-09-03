@@ -7,6 +7,7 @@ import Loading from './Loading'
 import { useParams } from 'react-router-dom'
 import { main } from '../api/axios'
 import AuthContext from '../context/AuthProvider'
+import { useNavigate } from 'react-router-dom'
 
 
 const Posts = () => {
@@ -15,6 +16,10 @@ const Posts = () => {
   const [loading, setLoading] = useState(true);
   const params = useParams();
   const { auth } = useContext(AuthContext);
+  const [input, setInput] = useState('');
+  const [form, setForm] = useState(false);
+  const [update, setUpdate] = useState(0);
+  const navigate = useNavigate();
 
   const getAllPosts = () => {
     const POSTS_URL = `/posts/index/${params.ticker.toUpperCase()}`;
@@ -36,6 +41,31 @@ const Posts = () => {
     })
   };
 
+  const makePost = () => {
+    const POSTS_URL = `/posts`;
+    const fakePost = {
+      post: input,
+      symbol: params.ticker.toUpperCase()
+    }
+      main.post(
+            POSTS_URL, fakePost,
+            {
+              headers: {'Authorization': localStorage.token,
+                        'Content-Type': 'application/json'},
+              withCredentials: false,
+            }
+    )
+    .then(response => {
+      console.log(response);
+      setUpdate(update + 1);
+      setForm(false);
+      setInput('');
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+
   const drawPost = (post) => {
     return (
       <div key={post.id} className="post-card">
@@ -44,11 +74,19 @@ const Posts = () => {
         <div className="post-footer">{post.created_at}</div>
       </div>
     )
-  }
+  };
+
+  const loginLink = () => {
+    navigate('/login');
+  };
+
+  const toggleForm = () => {
+    form ? (setForm(false)) : (setForm(true));
+  };
 
   useEffect(() => {
     getAllPosts();
-  }, [])
+  }, [update])
 
   return (
     <>
@@ -64,9 +102,27 @@ const Posts = () => {
           <header className='posts-header'><h4>What are people saying about {params.ticker}</h4></header>
           <>
           {(auth.login) ? (
-            <div className='post-add'>add a post</div>
+            <div onClick={toggleForm} className='post-add'>add a post</div>
           ) : (
-            <div className='post-add'>login to add post</div>
+            <div onClick={loginLink} className='post-add'>login to add post</div>
+          )}
+          </>
+          <>
+          {form ? (
+            <div className='post-field'>
+              <label htmlFor="post">
+                your post: 
+              </label>
+              <textarea
+                name='post'
+                placeholder='...'
+                onChange={(e) => {setInput(e.target.value)}}
+                value={input}
+              ></textarea>
+              <button onClick={makePost}>submit</button>
+            </div>
+          ) : (
+            <></>
           )}
           </>
           {posts.map((post) => {

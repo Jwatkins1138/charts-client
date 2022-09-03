@@ -182,6 +182,12 @@ aside {
   padding: .25em;
 }
 
+.post-field {
+  display: flex;
+  flex-direction: column;
+  padding: .25em;
+}
+
 input {
   margin: .5em;
 }
@@ -191,6 +197,13 @@ input {
 }
 
 input[type=text], input[type=password], input[type=email] {
+  padding: .5em;
+  background: rgb(255, 255, 255, .5);
+  cursor: default;
+  border: 1px solid aqua;
+}
+
+textarea {
   padding: .5em;
   background: rgb(255, 255, 255, .5);
   cursor: default;

@@ -96,6 +96,27 @@ const Test = () => {
   //   .then((res) => console.log(res));
   // };
 
+  const testPost = () => {
+    const POSTS_URL = `/posts`;
+    const fakePost = {
+      post: "hello this is a fake test post from the client",
+      symbol: "IBM"
+    }
+      main.post(
+            POSTS_URL, fakePost,
+            {
+              headers: {'Authorization': localStorage.token,
+                        'Content-Type': 'application/json'},
+              withCredentials: false,
+            }
+    )
+    .then(response => {
+      console.log(response);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
   
 
   
@@ -118,6 +139,7 @@ const Test = () => {
               <button onClick={token}>token</button>
               <button onClick={logOut}>log out</button>
               <button onClick={testSet}>set auth</button>
+              <button onClick={testPost}>post</button>
             </div>
           </div>
         </div>

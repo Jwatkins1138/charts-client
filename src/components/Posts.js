@@ -58,9 +58,9 @@ const Posts = () => {
       <>
     <div className='container'>
       <Header />
-      <main className='info'>
+      <main className='posts'>
         <SideBar />
-        <div className='info-main'>
+        <div className='posts-main'>
           <header className='posts-header'><h4>What are people saying about {params.ticker}</h4></header>
           <>
           {(auth.login) ? (

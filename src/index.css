@@ -168,6 +168,7 @@ aside {
 
 .post-add {
   display: flex;
+  padding: .5em;
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid lightcyan;

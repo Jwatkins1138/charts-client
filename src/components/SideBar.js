@@ -6,9 +6,8 @@ import { main } from '../api/axios'
 
 const SideBar = () => {
 
-  const { auth, setAuth } = useContext(AuthContext);
+  const { auth } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [user, setUser] = useState({});
   const [lists, setLists] = useState([]);
 
   const getLists = () => {
@@ -31,13 +30,6 @@ const SideBar = () => {
   };
   useEffect(() => {
     getLists();
-    if (localStorage.token) {
-      currentUser().then((res) => {
-        setUser(res);
-      });
-    } else {
-      setUser({});
-    }
   }, [auth]);
 
   const clickItem = (e) => {
@@ -49,14 +41,14 @@ const SideBar = () => {
   return (
     <aside>
       <>
-      { (user && user.id) ? (
+      { (auth.user && auth.user.id) ? (
         <>
         <div className='side-title'><h4>your watch lists</h4></div>
         {lists.map((list) => {
           return (
-            <div className='list-container'>
+            <div key={list.name}className='list-container'>
               <div className='side-title'><h5>{list.name}</h5></div>
-              {list.symbols.map((symbol) => <div id={symbol} className="side-item" onClick={clickItem}><span>{symbol}</span></div>)}
+              {list.symbols.map((symbol) => <div key={symbol} id={symbol} className="side-item" onClick={clickItem}><span>{symbol}</span></div>)}
             </div>
           )
         })}

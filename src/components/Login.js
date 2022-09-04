@@ -1,6 +1,6 @@
 import { main } from '../api/axios'
 import React, { useRef, useState, useEffect, useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Header from './Header'
 import SideBar from './SideBar'
 import SideBarRight from './SideBarRight'
@@ -16,29 +16,25 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
-  const [user, setUser] = useState({});
+  // const [user, setUser] = useState({});
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    if (localStorage.token) {
-      currentUser().then((res) => {
-        setUser(res);
-      });
-    }
-  }, [auth]);
+  // useEffect(() => {
+  //   if (localStorage.token) {
+  //     currentUser().then((res) => {
+  //       setUser(res);
+  //     });
+  //   }
+  // }, [auth]);
   
-  useEffect(() => {
-    if (emailRef) {
-    emailRef.current.focus();
-    }
-  }, []);
 
   const authLog = async () => {
     logOut().then((res) => {
       console.log(res);
       if (res) {
-        setUser({});
         setSuccess(false);
-        setAuth({login: false});
+        setAuth({login: false,
+                user: {}});
       }
     })
   };
@@ -67,6 +63,7 @@ const Login = () => {
       setSuccess(true);
       setAuth({login: true,
                 user: res.user});
+      navigate(-1);          
     })
     .catch((err) => {
       if (!err?.response) {
@@ -86,9 +83,9 @@ const Login = () => {
         <SideBar />
         <div className='sign-up-main'>
           <>
-            {(success || (user && user.id))? (
+            {(success || (auth.user && auth.user.id))? (
               <section>
-                <h2 className='success'>you are logged in as: {user && user.id ? user.email : ''}</h2>
+                <h2 className='success'>you are logged in as: {auth.user && auth.user.id ? auth.user.email : ''}</h2>
                 <button onClick={authLog}>log out</button>
               </section>
             ) : (

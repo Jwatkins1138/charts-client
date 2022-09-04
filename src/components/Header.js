@@ -11,7 +11,6 @@ import AuthContext from '../context/AuthProvider'
 
 const Header = () => {
   const { auth, setAuth } = useContext(AuthContext);
-  const [user, setUser] = useState({});
   const [ticker, setTicker] = useState('');
   const navigate = useNavigate();
   useEffect(() => {
@@ -20,9 +19,7 @@ const Header = () => {
         setAuth({login: true,
           user: res});
       });
-    } else {
-      setUser({});
-    }
+    } 
   }, [auth]);
 
   const searchTicker = () => {

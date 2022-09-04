@@ -33,7 +33,7 @@ const Posts = () => {
     )
     .then(response => {
       console.log(response);
-      setPosts(response.data.posts);
+      setPosts(response.data.posts.reverse());
       setLoading(false);
     })
     .catch(err => {
@@ -125,7 +125,7 @@ const Posts = () => {
             <></>
           )}
           </>
-          {posts.reverse().map((post) => {
+          {posts.map((post) => {
             return drawPost(post);
           })}
           <ChartFooter ticker={params.ticker}/>

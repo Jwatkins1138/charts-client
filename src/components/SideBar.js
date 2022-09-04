@@ -6,7 +6,7 @@ import { main } from '../api/axios'
 
 const SideBar = () => {
 
-  const { auth } = useContext(AuthContext);
+  const { auth, setAuth } = useContext(AuthContext);
   const navigate = useNavigate();
   const [lists, setLists] = useState([]);
 
@@ -22,14 +22,16 @@ const SideBar = () => {
     )
     .then(response => {
       console.log(response);
-      setLists(response.data.lists)
+      setAuth({login: auth.login, user: auth.user, lists: response.data.lists})
     })
     .catch(err => {
       console.log(err);
     })
   };
   useEffect(() => {
-    getLists();
+    if (auth.login && !auth.lists) {
+      getLists();
+    }
   }, [auth]);
 
   const clickItem = (e) => {
@@ -41,10 +43,10 @@ const SideBar = () => {
   return (
     <aside>
       <>
-      { (auth.user && auth.user.id) ? (
+      { (auth.login && auth.lists) ? (
         <>
         <div className='side-title'><h4>your watch lists</h4></div>
-        {lists.map((list) => {
+        {auth.lists.map((list) => {
           return (
             <div key={list.name}className='list-container'>
               <div className='side-title'><h5>{list.name}</h5></div>

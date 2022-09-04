@@ -13,6 +13,7 @@ const Header = () => {
   const { auth, setAuth } = useContext(AuthContext);
   const [ticker, setTicker] = useState('');
   const navigate = useNavigate();
+
   useEffect(() => {
     if (localStorage.token && !auth.user) {
       currentUser().then((res) => {
@@ -20,7 +21,7 @@ const Header = () => {
           user: res});
       });
     } 
-  }, [auth]);
+  }, []);
 
   const searchTicker = () => {
     navigate('/chart/' + ticker);

@@ -45,7 +45,7 @@ const Profile = () => {
       console.log(res);
       if (res) {
         setUser({});
-        setAuth({login: false});
+        setAuth({user: {}, login: false});
       }
     })
   };

@@ -8,9 +8,11 @@ import AuthContext from '../context/AuthProvider'
 import { main } from '../api/axios'
 
 const Profile = () => {
-  const { setAuth } = useContext(AuthContext);
-  const [user, setUser] = useState({});
-  const [lists, setLists] = useState([]);
+  const { auth, setAuth } = useContext(AuthContext);
+  // const [user, setUser] = useState({});
+  // const [lists, setLists] = useState([]);
+  const [form, setForm] = useState(false);
+  const [input, setInput] = useState('');
 
   const getLists = () => {
     const LISTS_URL = `/lists/index`;
@@ -24,31 +26,40 @@ const Profile = () => {
     )
     .then(response => {
       console.log(response);
-      setLists(response.data.lists)
+      // setLists(response.data.lists)
     })
     .catch(err => {
       console.log(err);
     })
   };
 
-  useEffect(() => {
-    getLists();
-    if (localStorage.token) {
-      currentUser().then((res) => {
-        setUser(res);
-      });
-    }
-  }, []);
+  // useEffect(() => {
+  //   getLists();
+  //   if (localStorage.token) {
+  //     currentUser().then((res) => {
+  //       setUser(res);
+  //     });
+  //   }
+  // }, []);
 
   const authLog = async () => {
     logOut().then((res) => {
       console.log(res);
       if (res) {
-        setUser({});
-        setAuth({user: {}, login: false});
+        // setUser({});
+        setAuth({user: {}, login: false, lists: []});
       }
     })
   };
+
+  const toggleForm = () => {
+    form ? (setForm(false)) : (setForm(true));
+  };
+
+  const makeList = () => {
+
+  };
+
 
   return (
     <div className='container'>
@@ -57,10 +68,42 @@ const Profile = () => {
         <SideBar />
         <div className='profile-main'>
         <>
-        { (user && user.id) ? (
+        { (auth.login && auth.user && auth.lists) ? (
           <>
-          <h2>{user.email}</h2>
-          <button onClick={authLog}>log out</button>
+          <div className='profile-header'>
+            <h2>{auth.user.email}'s profile</h2>
+            <button onClick={authLog}>log out</button>
+          </div>
+          <div className='list-area'>
+          {auth.lists.map((list) => {
+            return (
+              <div className='list-container-profile'>
+                <h4>{list.name}</h4>
+                {list.symbols.map((symbol) => <div key={symbol} className='profile-item'><span>{symbol}</span><span>x</span></div>)}
+              </div>
+            )
+          })}
+          </div>
+          <div onClick={toggleForm} className='post-add'>new list</div>
+          <>
+          {form ? (
+            <div className='post-field'>
+              <label htmlFor="list">
+                list name: 
+              </label>
+              <input
+                type='text'
+                name='list'
+                placeholder='...'
+                onChange={(e) => {setInput(e.target.value)}}
+                value={input}
+              />
+              <button onClick={makeList}>submit</button>
+            </div>
+          ) : (
+            <></>
+          )}
+          </>
           </>
         ) : (
           <>
@@ -69,14 +112,6 @@ const Profile = () => {
           </>
         )}
         </>
-        {lists.map((list) => {
-          return (
-            <div className='list-container'>
-              <h3>{list.name}</h3>
-              {list.symbols.map((symbol) => <h5>{symbol}</h5>)}
-            </div>
-          )
-        })}
         </div>
         <SideBarRight />
       </main>

@@ -20,17 +20,11 @@ function App() {
         <Route path='/loading' element={<Loading />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/chart' element={<Chart />} />
         <Route path='/chart/:ticker' element={<Chart />} />
-        <Route path='/line' element={<LineChart />} />
-        <Route path='/line/:ticker' element={<LineChart />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/about' element={<About />} />
-        <Route path='/posts' element={<Posts />} />
         <Route path='/posts/:ticker' element={<Posts />} />
-        <Route path='/info' element={<Info />} />
         <Route path='/info/:ticker' element={<Info />} />
-
       </Routes>
     </BrowserRouter>  
   );

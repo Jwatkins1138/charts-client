@@ -13,13 +13,13 @@ const Header = () => {
   const { auth, setAuth } = useContext(AuthContext);
   const [ticker, setTicker] = useState('');
   const navigate = useNavigate();
+  // const [test, setTest] = useContext(auth);
 
   useEffect(() => {
-    if (localStorage.token && !auth.user) {
+    if (localStorage.token && !auth.login) {
       currentUser().then((res) => {
-        setAuth({login: true,
-          user: res});
-      });
+        setAuth({ user: res, login: true});
+      })
     } 
   }, []);
 
@@ -47,7 +47,7 @@ const Header = () => {
       </div>
       <nav className='header-side'>
         <>
-        { (auth.user && auth.user.id) ? (
+        { (auth.login && auth.user && auth.user.id ) ? (
           <>
           <span>logged in as: <h3>{auth.user.email}</h3></span>
           <Link to='/profile'><FontAwesomeIcon className="nav-icon" icon={faUser} /></Link>

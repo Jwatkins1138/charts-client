@@ -61,8 +61,7 @@ const Login = () => {
       setEmail('');
       setPassword('');
       setSuccess(true);
-      setAuth({login: true,
-                user: res.user});
+      setAuth({ user: res.user, login: true });
       navigate(-1);          
     })
     .catch((err) => {
@@ -83,7 +82,7 @@ const Login = () => {
         <SideBar />
         <div className='sign-up-main'>
           <>
-            {(success || (auth.user && auth.user.id))? (
+            {(success || auth.login) ? (
               <section>
                 <h2 className='success'>you are logged in as: {auth.user && auth.user.id ? auth.user.email : ''}</h2>
                 <button onClick={authLog}>log out</button>

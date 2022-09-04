@@ -47,7 +47,7 @@ const Profile = () => {
       console.log(res);
       if (res) {
         // setUser({});
-        setAuth({user: {}, login: false, lists: []});
+        setAuth({user: {}, login: false});
       }
     })
   };
@@ -57,8 +57,29 @@ const Profile = () => {
   };
 
   const makeList = () => {
-
-  };
+    const LISTS_URL = `/lists`;
+    const newList = {
+      name: input,
+      symbols: []
+    }
+      main.post(
+            LISTS_URL, newList,
+            {
+              headers: {'Authorization': localStorage.token,
+                        'Content-Type': 'application/json'},
+              withCredentials: false,
+            }
+    )
+    .then(response => {
+      console.log(response);
+      setAuth({login: auth.login, user: auth.user, lists: auth.lists, update: auth.update + 1});
+      setForm(false);
+      setInput('');
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
 
 
   return (
@@ -68,14 +89,14 @@ const Profile = () => {
         <SideBar />
         <div className='profile-main'>
         <>
-        { (auth.login && auth.user && auth.lists) ? (
+        { ( auth.login && auth.user && auth.user.id ) ? (
           <>
           <div className='profile-header'>
             <h2>{auth.user.email}'s profile</h2>
             <button onClick={authLog}>log out</button>
           </div>
           <div className='list-area'>
-          {auth.lists.map((list) => {
+          {auth.user.lists.map((list) => {
             return (
               <div className='list-container-profile'>
                 <h4>{list.name}</h4>

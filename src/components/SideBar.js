@@ -22,17 +22,21 @@ const SideBar = () => {
     )
     .then(response => {
       console.log(response);
-      setAuth({login: auth.login, user: auth.user, lists: response.data.lists})
+      setAuth({login: auth.login, user: auth.user, lists: response.data.lists, update: auth.update})
     })
     .catch(err => {
       console.log(err);
     })
   };
-  useEffect(() => {
-    if (auth.login && !auth.lists) {
-      getLists();
-    }
-  }, [auth]);
+  // useEffect(() => {
+  //   if (auth.login && !auth.lists) {
+  //     getLists();
+  //   }
+  // }, [auth]);
+
+  // useEffect(() => {
+  //   getLists();
+  // }, [auth.update]);
 
   const clickItem = (e) => {
     console.log(e.target.id);
@@ -43,10 +47,10 @@ const SideBar = () => {
   return (
     <aside>
       <>
-      { (auth.login && auth.lists) ? (
+      { (auth.login && auth.user && auth.user.id ) ? (
         <>
         <div className='side-title'><h4>your watch lists</h4></div>
-        {auth.lists.map((list) => {
+        {auth.user.lists.map((list) => {
           return (
             <div key={list.name}className='list-container'>
               <div className='side-title'><h5>{list.name}</h5></div>

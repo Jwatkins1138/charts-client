@@ -140,7 +140,11 @@ const Test = () => {
     })
   };
   
-
+  const checkUser = () => {
+    currentUser().then((res) => {
+      console.log(res);
+    })
+  }
   
 
   const token = () => {
@@ -156,7 +160,7 @@ const Test = () => {
           <div className='form-card'>
             <div className='card-footer'>
               {/* <button onClick={signUp}>sign up</button> */}
-              <button onClick={logIn}>log in</button>
+              <button onClick={checkUser}>user</button>
               {/* <button onClick={console.log(currentUser)}>user?</button> */}
               <button onClick={token}>token</button>
               <button onClick={logOut}>log out</button>

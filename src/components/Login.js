@@ -42,6 +42,7 @@ const Login = () => {
                 user: {}});
       }
     })
+  }
   };
 
   const LOGIN_URL = '/users/sign_in'

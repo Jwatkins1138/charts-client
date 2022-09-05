@@ -10,43 +10,39 @@ import { main } from '../api/axios'
 const Profile = () => {
   const { auth, setAuth } = useContext(AuthContext);
   // const [user, setUser] = useState({});
-  // const [lists, setLists] = useState([]);
+  const [update, setUpdate] = useState(0);
   const [form, setForm] = useState(false);
   const [input, setInput] = useState('');
 
-  const getLists = () => {
-    const LISTS_URL = `/lists/index`;
-      main.get(
-            LISTS_URL,
-            {
-              headers: {'Authorization': localStorage.token,
-                        'Content-Type': 'application/json'},
-              withCredentials: false,
-            }
-    )
-    .then(response => {
-      console.log(response);
-      // setLists(response.data.lists)
-    })
-    .catch(err => {
-      console.log(err);
-    })
-  };
+  // const getLists = () => {
+  //   const LISTS_URL = `/lists/index`;
+  //     main.get(
+  //           LISTS_URL,
+  //           {
+  //             headers: {'Authorization': localStorage.token,
+  //                       'Content-Type': 'application/json'},
+  //             withCredentials: false,
+  //           }
+  //   )
+  //   .then(response => {
+  //     console.log(response);
+  //     // setLists(response.data.lists)
+  //   })
+  //   .catch(err => {
+  //     console.log(err);
+  //   })
+  // };
 
-  // useEffect(() => {
-  //   getLists();
-  //   if (localStorage.token) {
-  //     currentUser().then((res) => {
-  //       setUser(res);
-  //     });
-  //   }
-  // }, []);
+  useEffect(() => {
+    currentUser().then((res) => {
+      setAuth({ user: res, login: true});
+    })
+  }, [update]);
 
   const authLog = async () => {
     logOut().then((res) => {
       console.log(res);
       if (res) {
-        // setUser({});
         setAuth({user: {}, login: false});
       }
     })
@@ -72,14 +68,14 @@ const Profile = () => {
     )
     .then(response => {
       console.log(response);
-      setAuth({login: auth.login, user: auth.user, lists: auth.lists, update: auth.update + 1});
+      setUpdate(update + 1);
       setForm(false);
       setInput('');
     })
     .catch(err => {
       console.log(err);
     })
-  }
+  };
 
 
   return (

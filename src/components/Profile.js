@@ -94,7 +94,7 @@ const Profile = () => {
           <div className='list-area'>
           {auth.user.lists.map((list) => {
             return (
-              <div key={list}className='list-container-profile'>
+              <div key={list.name} className='list-container-profile'>
                 <h4>{list.name}</h4>
                 {list.symbols.map((symbol) => <div key={symbol} className='profile-item'><span>{symbol}</span><span>x</span></div>)}
               </div>
@@ -124,8 +124,12 @@ const Profile = () => {
           </>
         ) : (
           <>
-          <Link to='/login'><button>login</button></Link>
-          <Link to='/signup'><button>sign up</button></Link>
+          <div className='profile-prompt'>
+            <span>you are not logged in, please </span>
+            <Link to='/login'><button>login</button></Link>
+            <span> or </span>
+            <Link to='/signup'><button>sign up</button></Link>
+          </div>  
           </>
         )}
         </>

@@ -5,7 +5,7 @@ import Header from './Header'
 import SideBar from './SideBar'
 import SideBarRight from './SideBarRight'
 import AuthContext from '../context/AuthProvider'
-import { currentUser, logOut } from '../helpers'
+import { logOut } from '../helpers'
 
 
 const SignUp = () => {
@@ -13,12 +13,8 @@ const SignUp = () => {
   const emailRef = useRef();
   const errRef = useRef();
   const [email, setEmail] = useState('');
-  const [emailFocus, setEmailFocus] = useState(false);
   const [password, setPassword] = useState('');
-  const [passwordFocus, setPasswordFocus] = useState(false);
   const [errMsg, setErrMsg] = useState('');
-  const [success, setSuccess] = useState(false);
-  const [user, setUser] = useState({});
 
   const REGISTER_URL = '/users'
 
@@ -41,9 +37,7 @@ const SignUp = () => {
       localStorage.setItem("token", res.headers["authorization"]);
       setEmail('');
       setPassword('');
-      setSuccess(true);
-      setAuth({login: true,
-              user: res.user});
+      setAuth({ user: res.data.user, login: true });
     })
     .catch((err) => {
       if (!err?.response) {
@@ -55,27 +49,15 @@ const SignUp = () => {
     })
   };
 
-  // useEffect(() => {
-  //   if (localStorage.token) {
-  //     currentUser().then((res) => {
-  //       setUser(res);
-  //     });
-  //   }
-  // }, [auth]);
-
-
   const authLog = async () => {
     logOut().then((res) => {
       console.log(res);
       if (res) {
-        setSuccess(false);
         setAuth({login: false,
                   user: {}});
       }
     })
   };
-
-
 
   return (
     <div className='container'>
@@ -84,7 +66,7 @@ const SignUp = () => {
         <SideBar />
         <div className='sign-up-main'>
         <>
-          {(success || (auth.user && auth.user.id))? (
+          {((auth.user && auth.user.id)) ? (
               <section>
                 <h2 className='success'>you are logged in as: {auth.user && auth.user.id ? auth.user.email : ''}</h2>
                 <button onClick={authLog}>log out</button>
@@ -112,8 +94,6 @@ const SignUp = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
                 required
-                onFocus={() => {setEmailFocus(true)}}
-                onBlur={() => {setEmailFocus(false)}}
               />
               <label htmlFor="password">
                 password:
@@ -124,8 +104,6 @@ const SignUp = () => {
                 onChange={(e) => {setPassword(e.target.value)}}
                 value={password}
                 required
-                onFocus={() => {setPasswordFocus(true)}}
-                onBlur={() => {setPasswordFocus(false)}}
               />
               <button>sign up</button>
               <div className='card-footer'>

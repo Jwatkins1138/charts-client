@@ -14,7 +14,6 @@ const Header = () => {
   const [ticker, setTicker] = useState('');
   const [at, setAt] = useState(false);
   const navigate = useNavigate();
-  // const [test, setTest] = useContext(auth);
 
   useEffect(() => {
     if ((localStorage.token && !auth.login) || (localStorage.token && !auth.user)) {

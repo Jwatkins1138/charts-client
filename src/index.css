@@ -394,6 +394,14 @@ main {
   background: rgb(255, 165, 0, .5);
 }
 
+.profile-prompt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4em;
+
+}
+
 #loading-text {
   color: orange;
   position: absolute;

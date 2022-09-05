@@ -1,47 +1,17 @@
 import { useState, useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { currentUser } from '../helpers'
 import AuthContext from '../context/AuthProvider'
-import { main } from '../api/axios'
 
 const SideBar = () => {
 
-  const { auth, setAuth } = useContext(AuthContext);
+  const { auth } = useContext(AuthContext);
   const navigate = useNavigate();
   const [at, setAt] = useState(false);
-  const [lists, setLists] = useState([]);
 
   useEffect(() => {
     at ? (setAt(false)) : (setAt(at));
   }, [auth])
 
-  const getLists = () => {
-    const LISTS_URL = `/lists/index`;
-      main.get(
-            LISTS_URL,
-            {
-              headers: {'Authorization': localStorage.token,
-                        'Content-Type': 'application/json'},
-              withCredentials: false,
-            }
-    )
-    .then(response => {
-      console.log(response);
-      setAuth({login: auth.login, user: auth.user, lists: response.data.lists, update: auth.update})
-    })
-    .catch(err => {
-      console.log(err);
-    })
-  };
-  // useEffect(() => {
-  //   if (auth.login && !auth.lists) {
-  //     getLists();
-  //   }
-  // }, [auth]);
-
-  // useEffect(() => {
-  //   getLists();
-  // }, [auth.update]);
 
   const clickItem = (e) => {
     console.log(e.target.id);

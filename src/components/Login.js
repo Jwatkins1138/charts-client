@@ -5,7 +5,7 @@ import Header from './Header'
 import SideBar from './SideBar'
 import SideBarRight from './SideBarRight'
 import AuthContext from '../context/AuthProvider'
-import { currentUser, logOut } from '../helpers'
+import { logOut } from '../helpers'
 
 const Login = () => {
 
@@ -15,29 +15,16 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errMsg, setErrMsg] = useState('');
-  const [success, setSuccess] = useState(false);
-  // const [user, setUser] = useState({});
   const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   if (localStorage.token) {
-  //     currentUser().then((res) => {
-  //       setUser(res);
-  //     });
-  //   }
-  // }, [auth]);
-  
 
   const authLog = async () => {
     if (!localStorage.token) {
-      setSuccess(false);
       setAuth({login: false,
                 user: {}});
     } else {
     logOut().then((res) => {
       console.log(res);
       if (res) {
-        setSuccess(false);
         setAuth({login: false,
                 user: {}});
       }
@@ -66,7 +53,6 @@ const Login = () => {
       localStorage.setItem("token", res.headers["authorization"]);
       setEmail('');
       setPassword('');
-      setSuccess(true);
       setAuth({ user: res.data.user, login: true });
       navigate(-1);          
     })
@@ -88,7 +74,7 @@ const Login = () => {
         <SideBar />
         <div className='sign-up-main'>
           <>
-            {(auth.login) ? (
+            {(auth.login && auth.user && auth.user.id ) ? (
               <section>
                 <h2 className='success'>you are logged in as: {auth.user && auth.user.id ? auth.user.email : ''}</h2>
                 <button onClick={authLog}>log out</button>

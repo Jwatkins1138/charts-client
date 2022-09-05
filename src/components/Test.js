@@ -56,36 +56,36 @@ const Test = () => {
   //     .catch((err) => console.error(err));
   // }
 
-  const logIn = () => {
-    console.log(localStorage.token);
-    // const url = 'https://ancient-plateau-95772.herokuapp.com/signup';
-    const url = 'http://localhost:3001/users/sign_in'
-    const user = {
-      user: {
-        email: 'testt@test.com',
-        password: 'testpass',
-      }
-    };
-    fetch(url, {
-      method: 'post',
-      headers: {
+  // const logIn = () => {
+  //   console.log(localStorage.token);
+  //   // const url = 'https://ancient-plateau-95772.herokuapp.com/signup';
+  //   const url = 'http://localhost:3001/users/sign_in'
+  //   const user = {
+  //     user: {
+  //       email: 'testt@test.com',
+  //       password: 'testpass',
+  //     }
+  //   };
+  //   fetch(url, {
+  //     method: 'post',
+  //     headers: {
         
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(user),
-    })
-      .then((res) => {
-        if(res.ok) {
-          console.log(res.headers.get("Authorization"));
-          localStorage.setItem("token", res.headers.get("Authorization"));
-          return res.json();
-        } else {
-          throw new Error(res);
-        }
-      })
-      .then((json) => console.dir(json))
-      .catch((err) => console.error(err));
-  }
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(user),
+  //   })
+  //     .then((res) => {
+  //       if(res.ok) {
+  //         console.log(res.headers.get("Authorization"));
+  //         localStorage.setItem("token", res.headers.get("Authorization"));
+  //         return res.json();
+  //       } else {
+  //         throw new Error(res);
+  //       }
+  //     })
+  //     .then((json) => console.dir(json))
+  //     .catch((err) => console.error(err));
+  // }
 
   // const currentUser = () => {
   //   const USER_URL = `/member/data`;

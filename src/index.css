@@ -244,6 +244,16 @@ label {
   margin-right: .5em;
 }
 
+.list-modal {
+  position: absolute;
+  cursor: default;
+  color: lightgray;
+}
+
+.list-modal-item:hover {
+  background: blue;
+}
+
 .footer-item {
   padding: .5em;
   color: gold;

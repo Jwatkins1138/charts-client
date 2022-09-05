@@ -6,14 +6,12 @@ import ChartFooter from './ChartFooter'
 import Loading from './Loading'
 import { useParams } from 'react-router-dom'
 import { alpha } from '../api/axios'
-import AuthContext from '../context/AuthProvider'
 
 const Info = () => {
 
   const [info, setInfo] = useState({});
   const [loading, setLoading] = useState(true);
   const params = useParams();
-  const { auth } = useContext(AuthContext);
 
   const key = 'FVE7LEZWLKOMWHDH';
   const INFO_URL = `/query?function=OVERVIEW&symbol=${params.ticker}&apikey=${key}`;

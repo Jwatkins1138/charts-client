@@ -29,6 +29,11 @@ const Login = () => {
   
 
   const authLog = async () => {
+    if (!localStorage.token) {
+      setSuccess(false);
+      setAuth({login: false,
+                user: {}});
+    } else {
     logOut().then((res) => {
       console.log(res);
       if (res) {

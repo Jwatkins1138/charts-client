@@ -17,7 +17,7 @@ const Header = () => {
   // const [test, setTest] = useContext(auth);
 
   useEffect(() => {
-    if (localStorage.token && !auth.login) {
+    if ((localStorage.token && !auth.login) || (localStorage.token && !auth.user.id)) {
       currentUser().then((res) => {
         setAuth({ user: res, login: true});
       })

@@ -85,7 +85,7 @@ const Profile = () => {
         <SideBar />
         <div className='profile-main'>
         <>
-        { ( auth.login && auth.user && auth.user.id ) ? (
+        { ( auth.login && auth.user && auth.user.lists ) ? (
           <>
           <div className='profile-header'>
             <h2>{auth.user.email}'s profile</h2>
@@ -94,7 +94,7 @@ const Profile = () => {
           <div className='list-area'>
           {auth.user.lists.map((list) => {
             return (
-              <div className='list-container-profile'>
+              <div key={list}className='list-container-profile'>
                 <h4>{list.name}</h4>
                 {list.symbols.map((symbol) => <div key={symbol} className='profile-item'><span>{symbol}</span><span>x</span></div>)}
               </div>

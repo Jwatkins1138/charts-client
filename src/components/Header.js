@@ -12,6 +12,7 @@ import AuthContext from '../context/AuthProvider'
 const Header = () => {
   const { auth, setAuth } = useContext(AuthContext);
   const [ticker, setTicker] = useState('');
+  const [at, setAt] = useState(false);
   const navigate = useNavigate();
   // const [test, setTest] = useContext(auth);
 
@@ -22,6 +23,10 @@ const Header = () => {
       })
     } 
   }, []);
+
+  useEffect(() => {
+    at ? (setAt(false)) : (setAt(at));
+  }, [auth])
 
   const searchTicker = () => {
     navigate('/chart/' + ticker);

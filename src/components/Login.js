@@ -61,7 +61,7 @@ const Login = () => {
       setEmail('');
       setPassword('');
       setSuccess(true);
-      setAuth({ user: res.user, login: true });
+      setAuth({ user: res.data.user, login: true });
       navigate(-1);          
     })
     .catch((err) => {

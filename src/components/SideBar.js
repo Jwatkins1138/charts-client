@@ -47,7 +47,7 @@ const SideBar = () => {
   return (
     <aside>
       <>
-      { (auth.login && auth.user && auth.user.id ) ? (
+      { (auth.login && auth.user && auth.user.lists ) ? (
         <>
         <div className='side-title'><h4>your watch lists</h4></div>
         {auth.user.lists.map((list) => {

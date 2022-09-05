@@ -8,7 +8,12 @@ const SideBar = () => {
 
   const { auth, setAuth } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [at, setAt] = useState(false);
   const [lists, setLists] = useState([]);
+
+  useEffect(() => {
+    at ? (setAt(false)) : (setAt(at));
+  }, [auth])
 
   const getLists = () => {
     const LISTS_URL = `/lists/index`;

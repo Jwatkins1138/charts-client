@@ -82,7 +82,7 @@ const Login = () => {
         <SideBar />
         <div className='sign-up-main'>
           <>
-            {(success || auth.login) ? (
+            {(auth.login) ? (
               <section>
                 <h2 className='success'>you are logged in as: {auth.user && auth.user.id ? auth.user.email : ''}</h2>
                 <button onClick={authLog}>log out</button>

@@ -1,16 +1,18 @@
-import { useState, useEffect, useContext } from 'react'
+import { useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { currentUser } from '../helpers'
 import AuthContext from '../context/AuthProvider'
 
 const SideBar = () => {
 
-  const { auth } = useContext(AuthContext);
+  const { auth, setAuth } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [at, setAt] = useState(false);
 
   useEffect(() => {
-    at ? (setAt(false)) : (setAt(at));
-  }, [auth])
+    currentUser().then((res) => {
+      setAuth({ user: res, login: true});
+    })
+  }, []);
 
 
   const clickItem = (e) => {

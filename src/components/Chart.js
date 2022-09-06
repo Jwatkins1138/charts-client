@@ -15,6 +15,7 @@ const Chart = () => {
   const [meta, setMeta] = useState({});
   const [data, setData] = useState({});
   const [note, setNote] = useState('');
+  const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
   const params = useParams();
 
@@ -32,6 +33,11 @@ const Chart = () => {
       } else {
         setNote('');
       }
+      if (res.data['Error Message']) {
+        setError(res.data['Error Message']);
+      } else {
+        setError('');
+      }
     })
     .catch((err) => console.error(err))
     .then(() => {
@@ -40,7 +46,6 @@ const Chart = () => {
   };
 
   useEffect(() => {
-    console.log(time);
     getAllData();
     
   }, [params, timeRef])
@@ -94,7 +99,8 @@ const Chart = () => {
       <main className='chart'>
         <SideBar />
         <div className='chart-main'>
-          <div className='chart-note'><p>{note}</p></div>
+          <div className='chart-note'><span>{note}</span></div>
+          <div className='chart-error'><span>{error}</span></div>
           <LineChart lineProps={lineProps}/>
           <ChartFooter ticker={params.ticker}/>
         </div>

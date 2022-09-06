@@ -361,6 +361,24 @@ main {
   justify-content: space-between;
 }
 
+.chart-note {
+  display: flex;
+  justify-content: center;
+  color: gray;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin: 0;
+}
+
+.chart-error {
+  display: flex;
+  justify-content: center;
+  color: orangered;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin: 0;
+}
+
 .profile-main {
   display: flex;
   flex-direction: column;

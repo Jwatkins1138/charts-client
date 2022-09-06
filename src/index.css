@@ -149,8 +149,31 @@ aside {
   margin-left: 0;
 }
 
-.head-search > input {
-  margin-right: 0;
+.input-container {
+  margin: 0;
+  padding: 0;
+}
+
+.drop-down {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  margin-right: .5em;
+  margin-left: .5em;
+  cursor: default;
+  
+  background: grey;
+  color: black;
+}
+
+.drop-symbol {
+  padding: .5em;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+.drop-symbol:hover {
+  background: aqua;
 }
 
 .header-side {

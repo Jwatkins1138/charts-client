@@ -94,7 +94,7 @@ const Header = () => {
           autoComplete='off'
           onFocus={toggleDrop}
           onBlur={toggleDrop}
-          onChange={(e) => {setTicker(e.target.value)}}
+          onChange={(e) => {setTicker(e.target.value.toUpperCase())}}
           value={ticker}
         />
         { drop ? (

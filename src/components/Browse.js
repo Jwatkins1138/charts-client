@@ -42,7 +42,7 @@ const Browse = () => {
 
   const drawTicker = (symbol) => {
     return (
-      <div key={symbol.id} onClick={linkTo} id={symbol.name} className='browse-item'><span>{symbol.name}</span><span>{symbol.description}</span></div>
+      <div key={symbol.id} onClick={linkTo} id={symbol.name} className='browse-item'><span>{symbol.name}</span><span>{symbol.description.substring(1)}</span></div>
     )
   };
 

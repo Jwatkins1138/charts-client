@@ -101,7 +101,7 @@ const Posts = () => {
         <div className='posts-main'>
           <header className='posts-header'><h4>What are people saying about {params.ticker}</h4></header>
           <>
-          {(auth.login) ? (
+          {(auth.login && auth.user && auth.user.id) ? (
             <div onClick={toggleForm} className='post-add'>add a post</div>
           ) : (
             <div onClick={loginLink} className='post-add'>login to add post</div>

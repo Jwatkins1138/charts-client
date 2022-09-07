@@ -4,11 +4,11 @@ import Loading from './components/Loading'
 import SignUp from './components/SignUp'
 import Login from './components/Login'
 import Chart from './components/Chart'
-import LineChart from './components/Line'
 import Profile from './components/Profile'
 import Posts from './components/Posts'
 import About from './components/About'
 import Info from './components/Info'
+import Browse from './components/Browse'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 function App() {
@@ -25,6 +25,7 @@ function App() {
         <Route path='/about' element={<About />} />
         <Route path='/posts/:ticker' element={<Posts />} />
         <Route path='/info/:ticker' element={<Info />} />
+        <Route path='/browse' element={<Browse />} />
       </Routes>
     </BrowserRouter>  
   );

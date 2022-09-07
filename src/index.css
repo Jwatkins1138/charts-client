@@ -566,3 +566,33 @@ form {
   border-bottom: .5px solid rgb(0, 255, 0, .5);
   /* border-bottom: .5px solid rgb(224, 255, 255, .5); */
 }
+
+.browse-main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background: black;
+  color: lightcyan;
+  overflow-y: scroll;
+}
+
+.browse-item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid aqua;
+  cursor: default;
+  padding: 1em;
+}
+
+.browse-item:hover {
+  background: blue;
+}
+
+.page-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1em;
+  padding-bottom: 2em;
+}

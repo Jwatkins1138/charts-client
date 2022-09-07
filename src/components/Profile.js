@@ -9,29 +9,9 @@ import { main } from '../api/axios'
 
 const Profile = () => {
   const { auth, setAuth } = useContext(AuthContext);
-  // const [user, setUser] = useState({});
   const [update, setUpdate] = useState(0);
   const [form, setForm] = useState(false);
   const [input, setInput] = useState('');
-
-  // const getLists = () => {
-  //   const LISTS_URL = `/lists/index`;
-  //     main.get(
-  //           LISTS_URL,
-  //           {
-  //             headers: {'Authorization': localStorage.token,
-  //                       'Content-Type': 'application/json'},
-  //             withCredentials: false,
-  //           }
-  //   )
-  //   .then(response => {
-  //     console.log(response);
-  //     // setLists(response.data.lists)
-  //   })
-  //   .catch(err => {
-  //     console.log(err);
-  //   })
-  // };
 
   useEffect(() => {
     currentUser().then((res) => {

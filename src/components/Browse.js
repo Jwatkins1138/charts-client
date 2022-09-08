@@ -7,10 +7,12 @@ import { faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons'
 import Header from './Header'
 import SideBar from './SideBar'
 import SideBarRight from './SideBarRight'
+import Loading from './Loading'
 
 const Browse = () => {
   const [page, setPage] = useState(0);
   const [tickers, setTickers] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   const getTickers = () => {
@@ -26,6 +28,7 @@ const Browse = () => {
       .then(response => {
       console.log(response);
       setTickers(response.data);
+      setLoading(false);
       })
       .catch(err => {
       console.log(err);
@@ -59,6 +62,11 @@ const Browse = () => {
   };
 
   return (
+    <>
+    {(loading) ? (
+      <Loading />
+    ) : (
+    <>
     <div className='container'>
       <Header />
       <main className='browse'>
@@ -77,6 +85,9 @@ const Browse = () => {
         <SideBarRight />
       </main>
     </div>
+    </>
+    )}
+    </>
   )
 }
 

@@ -196,6 +196,7 @@ aside {
   align-items: center;
   border-bottom: 1px solid lightcyan;
   cursor: default;
+  margin-bottom: 1em;
 }
 
 .post-add:hover {

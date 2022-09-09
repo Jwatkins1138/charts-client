@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom'
 import AuthContext from '../context/AuthProvider'
 import { main } from '../api/axios'
 import Gravatar from 'react-gravatar'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleMinus } from '@fortawesome/free-solid-svg-icons'
 
 const Profile = () => {
   const { auth, setAuth } = useContext(AuthContext);
@@ -58,6 +60,25 @@ const Profile = () => {
     })
   };
 
+  const removeItem = (e) => {
+    const REMOVE_URL = `/lists_remove/${e.target.parentElement.id}/${e.target.id}`;
+      main.patch(
+            REMOVE_URL,
+            {
+              headers: {'Authorization': localStorage.token,
+                        'Content-Type': 'application/json'},
+              withCredentials: false,
+            }
+    )
+    .then(response => {
+      console.log(response);
+      setUpdate(update + 1);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+
 
   return (
     <div className='container'>
@@ -75,9 +96,9 @@ const Profile = () => {
           <div className='list-area'>
           {auth.user.lists.map((list) => {
             return (
-              <div key={list.name} className='list-container-profile'>
+              <div key={list.name} id={list.id} className='list-container-profile'>
                 <h4>{list.name}</h4>
-                {list.symbols.map((symbol) => <div key={symbol} className='profile-item'><span>{symbol}</span><span>x</span></div>)}
+                {list.symbols.map((symbol) => <div key={symbol} id={symbol} onClick={removeItem} className='profile-item'><span>{symbol}</span><FontAwesomeIcon icon={faCircleMinus} /></div>)}
               </div>
             )
           })}

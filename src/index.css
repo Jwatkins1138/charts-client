@@ -222,6 +222,11 @@ aside {
   margin-left: .5em;
 }
 
+img {
+  border-radius: 50%;
+  border: .5px solid blue;
+}
+
 .post-field {
   display: flex;
   flex-direction: column;

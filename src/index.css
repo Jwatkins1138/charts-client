@@ -589,6 +589,22 @@ form {
   background: blue;
 }
 
+.letter-control {
+  display: flex;
+  justify-content: center;
+  padding: .5em;
+}
+
+.letter-select {
+  padding: .2em;
+  cursor: default;
+
+}
+
+.letter-select:hover {
+  background: blue;
+}
+
 .page-control {
   display: flex;
   justify-content: center;

@@ -13,11 +13,13 @@ const Browse = () => {
   const [page, setPage] = useState(0);
   const [tickers, setTickers] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [letter, setLetter] = useState('');
   const navigate = useNavigate();
   const mainRef = useRef(null);
+  const letterArray = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
   const getTickers = () => {
-    const TICKER_PAGE_URL = `/tickers_page/${page}`;
+    const TICKER_PAGE_URL = `/tickers_page/${page}/${letter}`;
       main.get(
         TICKER_PAGE_URL,
         {
@@ -38,7 +40,7 @@ const Browse = () => {
 
   useEffect(() => {
     getTickers();
-  }, [page])
+  }, [page, letter])
 
   useEffect(() => {
     if(!loading) {
@@ -50,9 +52,20 @@ const Browse = () => {
     navigate('/chart/' + e.target.id);
   };
 
+  const assignLetter = (e) => {
+    setLetter(e.target.id);
+    setPage(0);
+  };
+
   const drawTicker = (symbol) => {
     return (
       <div key={symbol.id} onClick={linkTo} id={symbol.name} className='browse-item'><span>{symbol.name}</span><span>{symbol.description.substring(1)}</span></div>
+    )
+  };
+
+  const drawLetter = (item) => {
+    return (
+      <div key={item} id={item} onClick={assignLetter} className='letter-select'>{item}</div>
     )
   };
 
@@ -79,7 +92,13 @@ const Browse = () => {
       <main className='browse'>
         <SideBar />
         <div ref={mainRef} className='browse-main'>
-          <div className='posts-header'><h4>browse all symbols</h4></div>
+          <div className='posts-header'><h4>browse all symbols: {letter}</h4></div>
+          <div className='letter-control'>
+            {letterArray.map((item) => {
+              return drawLetter(item);
+            })}
+            <div key='clear' id='' onClick={assignLetter} className='letter-select'>clear</div>
+          </div>
           {tickers.map((item) => {
               return drawTicker(item);
             })}

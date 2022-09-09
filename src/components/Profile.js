@@ -6,6 +6,7 @@ import SideBarRight from './SideBarRight'
 import { Link } from 'react-router-dom'
 import AuthContext from '../context/AuthProvider'
 import { main } from '../api/axios'
+import Gravatar from 'react-gravatar'
 
 const Profile = () => {
   const { auth, setAuth } = useContext(AuthContext);
@@ -68,7 +69,7 @@ const Profile = () => {
         { ( auth.login && auth.user && auth.user.lists ) ? (
           <>
           <div className='profile-header'>
-            <h2>{auth.user.email}'s profile</h2>
+            <Gravatar email={auth.user.email} /><h2>{auth.user.email}'s profile</h2>
             <button onClick={authLog}>log out</button>
           </div>
           <div className='list-area'>

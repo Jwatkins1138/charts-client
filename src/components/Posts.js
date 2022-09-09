@@ -8,6 +8,7 @@ import { useParams } from 'react-router-dom'
 import { main } from '../api/axios'
 import AuthContext from '../context/AuthProvider'
 import { useNavigate } from 'react-router-dom'
+import Gravatar from 'react-gravatar'
 
 
 const Posts = () => {
@@ -69,7 +70,7 @@ const Posts = () => {
   const drawPost = (post) => {
     return (
       <div key={post.id} className="post-card">
-        <div className="post-author"><b>{post.user.email}</b> says: </div>
+        <div className="post-author"><Gravatar email={post.user.email} /><b> {post.user.email} </b> says: </div>
         <div className="post-body"><p>{post.post}</p></div>
         <div className="post-footer">{post.created_at}</div>
       </div>

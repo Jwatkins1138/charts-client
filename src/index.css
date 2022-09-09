@@ -210,8 +210,16 @@ aside {
 
 .post-author {
   color: grey;
-  border-bottom: 1px solid lime;
+  border-bottom: .5px solid aqua;
+  border-top: .5px solid aqua;
   padding: .25em;
+  display: flex;
+  align-items: center;
+}
+
+.post-author > b {
+  margin-right: .5em;
+  margin-left: .5em;
 }
 
 .post-field {

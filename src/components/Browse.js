@@ -1,5 +1,5 @@
 import { main } from '../api/axios'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowAltCircleLeft } from '@fortawesome/free-solid-svg-icons'
@@ -14,6 +14,7 @@ const Browse = () => {
   const [tickers, setTickers] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const mainRef = useRef(null);
 
   const getTickers = () => {
     const TICKER_PAGE_URL = `/tickers_page/${page}`;
@@ -36,8 +37,14 @@ const Browse = () => {
   };
 
   useEffect(() => {
-    getTickers()
+    getTickers();
   }, [page])
+
+  useEffect(() => {
+    if(!loading) {
+      mainRef.current.scrollTo(0, 0);
+    };
+  }, [tickers])
 
   const linkTo = (e) => {
     navigate('/chart/' + e.target.id);
@@ -71,7 +78,7 @@ const Browse = () => {
       <Header />
       <main className='browse'>
         <SideBar />
-        <div className='browse-main'>
+        <div ref={mainRef} className='browse-main'>
           <div className='posts-header'><h4>browse all symbols</h4></div>
           {tickers.map((item) => {
               return drawTicker(item);

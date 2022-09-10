@@ -16,7 +16,6 @@ const SideBar = () => {
 
 
   const clickItem = (e) => {
-    console.log(e.target.id);
     navigate('/chart/' + e.target.id);
   };
 
@@ -45,7 +44,7 @@ const SideBar = () => {
         <div id="DIA"className="side-item" onClick={clickItem}><span>DIA</span></div>
         <div id="XLF"className="side-item" onClick={clickItem}><span>XLF</span></div>
         <div className='side-title'><h5>tech</h5></div>
-        <div id="APP"className="side-item" onClick={clickItem}><span>APP</span></div>
+        <div id="AAPL"className="side-item" onClick={clickItem}><span>APP</span></div>
         <div id="GOOG"className="side-item" onClick={clickItem}><span>GOOG</span></div>
         <div id="META"className="side-item" onClick={clickItem}><span>META</span></div>
         <div id="IBM"className="side-item" onClick={clickItem}><span>IBM</span></div>

@@ -49,11 +49,15 @@ const Login = () => {
       })
     .then((res) => {
       console.log(res);
-      localStorage.setItem("token", res.headers["authorization"]);
-      setEmail('');
-      setPassword('');
-      setAuth({ user: res.data.user, login: true });
-      navigate(-1);          
+      if (res.headers["authorization"]) {
+        localStorage.setItem("token", res.headers["authorization"]);
+        setEmail('');
+        setPassword('');
+        setAuth({ user: res.data.user, login: true });
+        navigate(-1);
+      } else {
+        setErrMsg("something went wrong");
+      }          
     })
     .catch((err) => {
       if (!err?.response) {

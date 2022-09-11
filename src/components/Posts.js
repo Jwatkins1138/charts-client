@@ -70,7 +70,7 @@ const Posts = () => {
   const drawPost = (post) => {
     return (
       <div key={post.id} className="post-card">
-        <div className="post-author"><Gravatar email={post.user.email} /><b> {post.user.email} </b> says: </div>
+        <div className="post-author"><Gravatar email={post.user.email} /><b>{post.user.email}</b> says: </div>
         <div className="post-body"><p>{post.post}</p></div>
         <div className="post-footer">{post.created_at}</div>
       </div>

@@ -398,6 +398,16 @@ main {
   justify-content: space-between;
 }
 
+.chart-toggle {
+  display: flex;
+  justify-content: flex-end;
+  padding: .25em;
+}
+
+.chart-icon:hover {
+  color: lime;
+}
+
 .chart-note {
   display: flex;
   justify-content: center;

@@ -23,7 +23,6 @@ const Login = () => {
                 user: {}});
     } else {
     logOut().then((res) => {
-      console.log(res);
       if (res) {
         setAuth({login: false,
                 user: {}});

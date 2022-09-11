@@ -7,11 +7,15 @@ import Loading from './Loading'
 import { alpha } from '../api/axios'
 import LineChart from './Line'
 import ChartFooter from './ChartFooter'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMaximize } from '@fortawesome/free-solid-svg-icons'
+import { faMinimize } from '@fortawesome/free-solid-svg-icons'
 
 const Chart = () => {
   const [lineProps, setLineProps] = useState({});
   const [time, setTime] = useState("TIME_SERIES_INTRADAY");
   const [timeRef, setTimeRef] = useState('Time Series (5min)');
+  const [full, setFull] = useState(false);
   const [meta, setMeta] = useState({});
   const [data, setData] = useState({});
   const [note, setNote] = useState('');
@@ -73,6 +77,9 @@ const Chart = () => {
     
   }, [time])
 
+  const toggleFull = () => {
+    full ? (setFull(false)) : (setFull(true));
+  }
   
 
   const dailyToA = () => {
@@ -94,11 +101,20 @@ const Chart = () => {
       <Loading />
     ) : (
       <>
+    {(full) ? (
+    <div className='chart-main'>
+      <div className='chart-toggle'><FontAwesomeIcon className='chart-icon' onClick={toggleFull} icon={faMinimize} /></div>
+      <div className='chart-note'><span>{note}</span></div>
+      <div className='chart-error'><span>{error}</span></div>
+      <LineChart lineProps={lineProps}/>
+    </div>
+    ) : (
     <div className='container'>
       <Header />
       <main className='chart'>
         <SideBar />
         <div className='chart-main'>
+          <div className='chart-toggle'><FontAwesomeIcon className='chart-icon' onClick={toggleFull} icon={faMaximize} /></div>
           <div className='chart-note'><span>{note}</span></div>
           <div className='chart-error'><span>{error}</span></div>
           <LineChart lineProps={lineProps}/>
@@ -107,6 +123,7 @@ const Chart = () => {
         <SideBarRight setTime={setTime}/>
       </main>
     </div>
+    )}
     </>
     )}
     </>

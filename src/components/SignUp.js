@@ -33,7 +33,6 @@ const SignUp = () => {
               },
       })
     .then((res) => {
-      console.log(res);
       localStorage.setItem("token", res.headers["authorization"]);
       setEmail('');
       setPassword('');
@@ -51,7 +50,6 @@ const SignUp = () => {
 
   const authLog = async () => {
     logOut().then((res) => {
-      console.log(res);
       if (res) {
         setAuth({login: false,
                   user: {}});

@@ -21,7 +21,6 @@ const Header = () => {
   useEffect(() => {
     if ((localStorage.token && !auth.login) || (localStorage.token && !auth.user)) {
       currentUser().then((res) => {
-        console.log(res);
         if (res) {
           setAuth({ user: res, login: true});
         } else {
@@ -43,7 +42,6 @@ const Header = () => {
         }
       )
       .then(response => {
-      console.log(response);
       setTickers(response.data);
       })
       .catch(err => {

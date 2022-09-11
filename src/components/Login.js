@@ -1,5 +1,5 @@
 import { main } from '../api/axios'
-import React, { useRef, useState, useEffect, useContext } from 'react'
+import React, { useRef, useState, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Header from './Header'
 import SideBar from './SideBar'
@@ -48,7 +48,6 @@ const Login = () => {
               },
       })
     .then((res) => {
-      console.log(res);
       if (res.headers["authorization"]) {
         localStorage.setItem("token", res.headers["authorization"]);
         setEmail('');

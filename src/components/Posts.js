@@ -57,7 +57,6 @@ const Posts = () => {
             }
     )
     .then(response => {
-      console.log(response);
       setUpdate(update + 1);
       setForm(false);
       setInput('');

@@ -36,10 +36,9 @@ const ChartFooter = (props) => {
             }
     )
     .then(response => {
-      console.log(response);
-      // setUpdate(update + 1);
-      // setForm(false);
-      // setInput('');
+      if (response) {
+        //add update force
+      }
     })
     .catch(err => {
       console.log(err);

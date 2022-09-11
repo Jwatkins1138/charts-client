@@ -29,7 +29,6 @@ const Browse = () => {
         }
       )
       .then(response => {
-      console.log(response);
       setTickers(response.data);
       setLoading(false);
       })

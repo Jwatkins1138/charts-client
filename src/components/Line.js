@@ -1,15 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
 import { Line } from 'react-chartjs-2'
-import Loading from './Loading'
-import axios from 'axios'
-import { alpha } from '../api/axios'
 import { Chart as ChartJS } from 'chart.js/auto'
 
 const LineChart = (props) => {
-
-  const params = useParams();
-  
 
   const parseData = () => {
     setData({
@@ -100,7 +93,6 @@ const LineChart = (props) => {
   });
 
   useEffect(() => {
-    console.log(props);
     parseData();
     parseOptions();
   }, [props])

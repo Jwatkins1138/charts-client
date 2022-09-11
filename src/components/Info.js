@@ -20,7 +20,6 @@ const Info = () => {
     alpha.get(INFO_URL)
     .then((response) => {
       const tempInfo = [];
-      console.log(response);
       for (const item in response.data){
         tempInfo.push([item, response.data[item]]);
       }

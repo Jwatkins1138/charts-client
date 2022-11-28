@@ -3,6 +3,11 @@ import SideBar from './SideBar'
 import SideBarRight from './SideBarRight'
 
 const About = () => {
+  const breaker = () => {
+    const unknown = {};
+    console.log(unknown.break.break);
+  }
+
   return (
     <div className='container'>
       <Header />
@@ -17,6 +22,7 @@ const About = () => {
               <p>Financial data comes from the alphavantage API - free tier so go easy on it.</p>
               <p>2022 Jason Christopher Watkins</p>
               <p>contact me: watkinsjasonc@gmail.com</p>
+              <button onClick={breaker}>break test</button>
             </div>
           </div>
         </div>
